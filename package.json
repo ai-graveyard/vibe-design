@@ -17,11 +17,15 @@
     "thumbs": "node scripts/generate-thumbs.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
+    "build:cloudflare": "pnpm build && node scripts/prepare-cloudflare.mjs",
+    "deploy:cloudflare": "pnpm build:cloudflare && wrangler deploy",
+    "deploy:redirect": "wrangler deploy --config wrangler.redirect.jsonc",
     "assets": "node scripts/embed-demo-assets.mjs",
     "validate:visual": "node scripts/validate-visual.mjs",
     "visual": "node scripts/validate-visual.mjs --capture",
     "test": "node --test scripts/tests/*.test.mjs",
     "validate:studio": "node scripts/validate-studio.mjs",
+    "validate:smoke": "node scripts/validate-smoke.mjs",
     "recipe:offline": "node scripts/build-recipe-offline.mjs",
     "validate:recipes": "node scripts/validate-recipes.mjs",
     "validate:workflow": "node scripts/validate-workflow.mjs"
@@ -58,6 +62,7 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "wrangler": "4.158.0"
   }
 }

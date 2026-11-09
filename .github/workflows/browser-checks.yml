@@ -1,0 +1,67 @@
+name: Full browser checks
+
+# 完整截图、交互与多尺寸矩阵只在 Actions 页面手动启动。
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: full-browser-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.18
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Cloudflare assets
+        run: pnpm build:cloudflare
+
+      - name: Browser smoke tests
+        run: pnpm validate:smoke
+
+      - name: Studio viewport and embedded interaction tests
+        run: pnpm validate:studio
+
+      - name: Project handoff, same-content comparison and evidence tests
+        run: pnpm validate:workflow
+
+      - name: Recipe, download and offline interaction tests
+        run: pnpm validate:recipes
+
+      - name: Four-viewport visual gates and local demo interactions
+        run: pnpm visual
+
+      - name: Demo 375px rendering checks
+        run: pnpm validate:render
+
+      - name: Upload visual review artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vibe-design-visual-review
+          path: |
+            output/smoke/
+            output/visual/
+            output/studio/
+            output/workflow/
+            output/recipes/
+            output/render/
+          if-no-files-found: ignore
+          retention-days: 14

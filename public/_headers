@@ -1,0 +1,10 @@
+/vibe-design/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Explicit encoding keeps browsers from guessing GBK for Chinese agent documents.
+/vibe-design/*.md
+  Content-Type: text/markdown; charset=utf-8
+
+/vibe-design/*.txt
+  Content-Type: text/plain; charset=utf-8

@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "vibe-design-redirect",
+  "main": "cloudflare/redirect-worker.js",
+  "compatibility_date": "2026-11-09",
+  "workers_dev": false,
+  "preview_urls": false,
+  "upload_source_maps": false,
+  "routes": [
+    { "pattern": "design-vibes.v2ai.org/*", "zone_name": "v2ai.org" }
+  ]
+}

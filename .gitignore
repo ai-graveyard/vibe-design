@@ -47,3 +47,11 @@ dist/
 # Local browser evidence
 /output/
 /public/vibe-design-offline.html
+
+# Cloudflare credentials, local runtime state and private deployment records
+.wrangler/
+.cloudflare-local/
+.dev.vars*
+wrangler.local.*
+.playwright-cli/
+dist-cloudflare/

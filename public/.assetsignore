@@ -1,0 +1,11 @@
+.env*
+.dev.vars*
+.git/**
+**/.DS_Store
+**/._*
+**/.env*
+**/.dev.vars*
+**/.git/**
+**/*.map
+**/*.pem
+**/*.key

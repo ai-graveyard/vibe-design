@@ -198,18 +198,31 @@ pnpm preview
 
 站点部署在子路径 `https://v2ai.org/vibe-design/`，部署路径统一由 [`src/data/site.ts`](./src/data/site.ts) 的 `BASE_PATH` 控制（`vite.config.ts`、路由 basename、静态资源与构建脚本都读它）。本地开发同样在 `http://localhost:5173/vibe-design/` 访问。
 
-`pnpm build` 产物在 `dist/`。每个 `/style/<id>` 都有真实的 `index.html` 静态壳，直接访问 `/vibe-design/style/<id>` 不需要回退；其余未知路径（如 `/compare/...`）需要 nginx 回退到子路径首页：
+使用 Cloudflare Workers Static Assets 托管，配置见 `wrangler.jsonc`。`pnpm build:cloudflare` 先构建 `dist/`，再将公开文件整理到 `dist-cloudflare/vibe-design/`，无需账号开通额外的子路径功能。已有静态页面优先返回，扩展名为空的客户端路由由 Worker 回退到首页，缺失的资源文件返回 404。路由前缀之外的请求转交原站点。
 
-```nginx
-location /vibe-design/ {
-    root /var/www;
-    try_files $uri $uri/ /vibe-design/index.html;
-}
+```bash
+pnpm exec wrangler login       # 在本机授权，凭证不进入仓库
+pnpm test
+pnpm lint
+pnpm deploy:cloudflare
+
+# 新站验证通过后再启用旧域名的永久跳转
+pnpm deploy:redirect
 ```
+
+`wrangler.redirect.jsonc` 将 `design-vibes.v2ai.org` 的请求以 301 跳转至新地址，并保留原路径及查询参数。两个域名必须在同一可管理的 Cloudflare Zone 内，且启用 DNS 代理。部署配置仅记录公开域名，不包含账号 ID、Zone ID 或凭证。`.wrangler/`、`.cloudflare-local/`、`.dev.vars*` 和本地配置均由 Git 忽略；只上传构建产物，不上传本机配置、源映射或服务器连接信息。
 
 站点内生成的 `robots.txt` 与 `sitemap.xml` 位于 `/vibe-design/` 下；搜索引擎只会读取域名根目录的 `robots.txt`，需要时在根站点中补一行 `Sitemap: https://v2ai.org/vibe-design/sitemap.xml`。
 
-[`deploy.sh`](./deploy.sh) 用 rsync 同步到服务器：逐文件先写临时文件再原子 rename，部署中途的访问不会拿到半截文件；不带 `--delete`，只增不删。
+发布仅通过本机授权后手动执行。GitHub 工作流只负责检查，不调用部署命令，也无需提供 Cloudflare 凭证。
+
+## 持续集成检查
+
+- **提交到 main 或创建 PR**：运行代码检查、单元测试、`pnpm build:cloudflare` 和生成文档同步检查。
+- **PR 额外检查**：运行 `pnpm validate:smoke`，覆盖桌面首页、手机端项目候选交互、对比页深层链接与双演示加载，保留截图和报告 7 天。
+- **完整浏览器检查**：在 GitHub Actions 中选择 **Full browser checks → Run workflow** 手动启动，运行工作台、项目交付、配方及离线下载、四尺寸视觉与 375px 渲染检查，保留截图和报告 14 天。
+
+本地可在构建后运行 `pnpm validate:smoke`。浏览器检查均使用独立的无界面 Chrome，并在结束时关闭浏览器及预览服务。完整矩阵仍可使用原有的 `validate:studio`、`validate:workflow`、`validate:recipes`、`visual` 与 `validate:render` 命令。
 
 ## 许可证
 
@@ -237,4 +250,4 @@ pnpm build            # 校验指纹、生成 Skill 与生产构建
 pnpm validate:studio  # 验证生产版的视口、全屏、嵌入表单与同步滚动
 ```
 
-`output/visual/index.html` 提供 120 张截图供人工并排复核，`report.json` 包含可见标题、字体/图像加载、溢出与交互结果。截图采用加载完成后的 reduced-motion 状态，动效本身仍须单独实测。CI 执行同一检查并上传截图供审阅；自动门禁不能替代设计判断。`public/thumbs/manifest.json` 把截图与演示源码绑定，源码改动却没有刷新预览时构建会失败。
+`output/visual/index.html` 提供 120 张截图供人工并排复核，`report.json` 包含可见标题、字体/图像加载、溢出与交互结果。截图采用加载完成后的 reduced-motion 状态，动效本身仍须单独实测。手动的 Full browser checks 工作流执行同一检查并上传截图供审阅；自动门禁不能替代设计判断。`public/thumbs/manifest.json` 把截图与演示源码绑定，源码改动却没有刷新预览时构建会失败。
