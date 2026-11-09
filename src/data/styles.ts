@@ -1,5 +1,5 @@
-export interface DesignStyle {
-  id: string;
+export interface DesignStyle<Id extends string = string> {
+  id: Id;
   name: string;
   nameEn: string;
   description: string;
@@ -22,7 +22,7 @@ export interface DesignStyle {
   colors: string[];
 }
 
-export const designStyles: DesignStyle[] = [
+export const designStyles = [
   {
     "id": "apple",
     "name": "Apple 风",
@@ -31,13 +31,11 @@ export const designStyles: DesignStyle[] = [
     "descriptionEn": "Center the product: short headlines, large product imagery, clear benefits and restrained sections. System sans-serif, tight display tracking and consistent spacing; reserve blue for links and primary actions. Let material and whitespace establish hierarchy.",
     "tags": [
       "极简",
-      "现代",
-      "热门"
+      "现代"
     ],
     "tagsEn": [
       "Minimal",
-      "Modern",
-      "Hot"
+      "Modern"
     ],
     "features": [
       "构图 - 以产品为中心：短标题、大幅产品画面、清楚的卖点与克制的分区。",
@@ -62,26 +60,26 @@ export const designStyles: DesignStyle[] = [
       "Curated minimal e-commerce"
     ],
     "pros": [
-      "极致专业感 - 一秒建立信任",
-      "永不过时 - 10年后依然优雅",
-      "性能卓越 - 首屏加载 < 1.5s",
-      "转化率高 - 减少决策疲劳"
+      "产品画面与短标题形成明确焦点",
+      "统一字阶与间距便于跨页面复用",
+      "克制的强调色为主操作保留位置",
+      "分区留白可区分产品信息与细节"
     ],
     "prosEn": [
-      "Ultimate professionalism - instant trust",
-      "Timeless - elegant after 10 years",
-      "Excellent performance - FCP < 1.5s",
-      "High conversion - reduces decision fatigue"
+      "Product imagery and short headlines establish a clear focus",
+      "A consistent type and spacing scale can be reused across pages",
+      "Restrained accents leave room for the primary action",
+      "Section spacing separates the product story from supporting detail"
     ],
     "cons": [
-      "对内容质量要求极高 - 平庸内容无处藏身",
-      "可能显得冷淡疏离 - 缺乏人情味",
-      "开发成本高 - 每个细节都需打磨"
+      "大留白需要足够的内容与图像支撑",
+      "低密度布局需为复杂数据另设结构",
+      "细字重、图像尺寸与响应式裁切需要逐项调整"
     ],
     "consEn": [
-      "Demands excellent content - mediocrity exposed",
-      "Can feel cold and distant - lacks warmth",
-      "High dev cost - every detail needs polish"
+      "Generous whitespace needs purposeful copy and imagery",
+      "Complex data needs a structure beyond a sparse layout",
+      "Type weight, image sizing and responsive crops need individual tuning"
     ],
     "examples": [
       "Apple.com",
@@ -148,26 +146,26 @@ export const designStyles: DesignStyle[] = [
       "Minimalist lifestyle brands"
     ],
     "pros": [
-      "极致专业感 - 跨文化通用",
-      "信息传达效率极高",
-      "品牌一致性易于维护",
-      "开发规范清晰可控"
+      "模数网格把相关功能组织在一起",
+      "标签、刻度与控件共享对齐轴",
+      "功能色与中性底色有清楚分工",
+      "重复的控件规格便于形成组件约定"
     ],
     "prosEn": [
-      "Ultimate professionalism - cross-cultural",
-      "Extremely efficient information delivery",
-      "Brand consistency easy to maintain",
-      "Clear and controllable dev specs"
+      "A modular grid groups related functions",
+      "Labels, scales and controls share alignment axes",
+      "Functional colors have distinct roles against neutral surfaces",
+      "Repeated control dimensions support component conventions"
     ],
     "cons": [
-      "需要深厚的排版功底",
-      "不适合需要情感共鸣的品牌",
-      "容易被误解为「无设计」"
+      "需要仔细处理标签、数字与控件的比例",
+      "品牌故事需要另用内容和图像表达",
+      "过度删减边界可能让操作不易辨认"
     ],
     "consEn": [
-      "Requires deep typography expertise",
-      "Not for brands needing emotional resonance",
-      "Can be mistaken for 'no design'"
+      "Labels, numbers and controls need careful proportional work",
+      "Brand storytelling needs support from copy and imagery",
+      "Removing too many boundaries can obscure interactive controls"
     ],
     "examples": [
       "Braun.com",
@@ -236,26 +234,26 @@ export const designStyles: DesignStyle[] = [
       "Minimal brand websites"
     ],
     "pros": [
-      "开发效率高 - CSS 简单",
-      "加载性能优异",
-      "跨平台一致性好",
-      "用户学习成本低"
+      "纯色分区与简单图标保持表面清楚",
+      "不依赖材质反光也能建立层级",
+      "颜色与字号规则可映射到不同平台",
+      "按钮与表单能使用一致的状态语言"
     ],
     "prosEn": [
-      "High dev efficiency - simple CSS",
-      "Excellent loading performance",
-      "Good cross-platform consistency",
-      "Low user learning curve"
+      "Solid regions and simple icons keep surfaces clear",
+      "Hierarchy can be established without material reflections",
+      "Color and type rules can be mapped across platforms",
+      "Buttons and forms can share a consistent state language"
     ],
     "cons": [
-      "缺乏深度可能显得单调",
-      "交互 affordance 不够直观",
-      "过于普及导致缺乏个性"
+      "需要用边界、标签和位置补足操作提示",
+      "只用色块可能让不同内容层级相似",
+      "品牌辨识需要依靠字体、图像或专属图形"
     ],
     "consEn": [
-      "Lack of depth may seem monotonous",
-      "Interaction affordances not intuitive enough",
-      "Over-popularity leads to lack of personality"
+      "Boundaries, labels and position must signal interactions",
+      "Color blocks alone can flatten content hierarchy",
+      "Brand identity needs type, imagery or distinctive graphics"
     ],
     "examples": [
       "Windows 8/10 UI",
@@ -320,26 +318,26 @@ export const designStyles: DesignStyle[] = [
       "Education and learning platforms"
     ],
     "pros": [
-      "设计系统极其完整 - 开箱即用",
-      "文档详尽 - 学习资源丰富",
-      "用户熟悉度高 - 减少学习成本",
-      "组件库生态成熟"
+      "色彩角色、字阶与形状有成套命名",
+      "选中、悬浮与按下状态可按同一体系组织",
+      "组件模式覆盖常见导航与表单任务",
+      "调性色表面能区分信息层次"
     ],
     "prosEn": [
-      "Extremely complete design system - ready to use",
-      "Thorough documentation - rich learning resources",
-      "High user familiarity - reduced learning cost",
-      "Mature component library ecosystem"
+      "Color roles, type scales and shapes have coordinated naming",
+      "Selected, hover and pressed states can share one system",
+      "Component patterns address common navigation and form tasks",
+      "Tonal surfaces can distinguish information layers"
     ],
     "cons": [
-      "品牌个性不足 - 容易千篇一律",
-      "过于「Google 味」",
-      "动画过渡可能影响性能"
+      "需要明确采用的版本和组件实现",
+      "默认组件需要调整以承接品牌表达",
+      "动效和层级不能直接替代任务反馈"
     ],
     "consEn": [
-      "Lacks brand personality - can be generic",
-      "Too 'Google-like'",
-      "Motion transitions may affect performance"
+      "The chosen version and component implementation must be explicit",
+      "Default components need adaptation to carry the brand",
+      "Motion and elevation cannot replace task feedback"
     ],
     "examples": [
       "Google 全系产品",
@@ -404,26 +402,26 @@ export const designStyles: DesignStyle[] = [
       "Premium magazine digital editions"
     ],
     "pros": [
-      "经典永恒 - 70年不过时",
-      "排版艺术的最高表达",
-      "信息架构清晰可辩",
-      "极强的文化符号价值"
+      "网格、栏线与编号共同建立阅读顺序",
+      "字重与比例承担主要的视觉表达",
+      "非对称结构可以容纳多层信息",
+      "强调色可集中用于关键信息"
     ],
     "prosEn": [
-      "Timeless classic - 70 years strong",
-      "Highest expression of typographic art",
-      "Crystal clear information architecture",
-      "Strong cultural symbol value"
+      "Grids, rules and numbering establish reading order together",
+      "Type weight and scale carry the main visual expression",
+      "Asymmetric structure can accommodate several information levels",
+      "Accent color can be concentrated on key information"
     ],
     "cons": [
-      "学习曲线陡峭 - 非科班难以掌握",
-      "字体授权成本高",
-      "对内容长度有较高要求"
+      "中文字体、字距与英文比例需要分别调整",
+      "长标题与内容变化会影响网格平衡",
+      "商业字体需要核实授权，也可采用合适的开放字体"
     ],
     "consEn": [
-      "Steep learning curve - hard for non-designers",
-      "High font licensing costs",
-      "Requires specific content lengths"
+      "Chinese type, spacing and Latin proportions need separate tuning",
+      "Long headlines and changing copy affect grid balance",
+      "Commercial fonts require license checks; suitable open fonts are an alternative"
     ],
     "examples": [
       "Josef Müller-Brockmann 作品",
@@ -459,12 +457,10 @@ export const designStyles: DesignStyle[] = [
     "descriptionEn": "Arrange different amounts of information in a hierarchical modular grid; spanning cells carry the main story. This study uses 24px desktop card corners, white-gray surfaces and selective blue-violet accents, reordered for mobile.",
     "tags": [
       "极简",
-      "热门",
       "现代"
     ],
     "tagsEn": [
       "Minimal",
-      "Hot",
       "Modern"
     ],
     "features": [
@@ -490,26 +486,26 @@ export const designStyles: DesignStyle[] = [
       "App download feature introductions"
     ],
     "pros": [
-      "信息组织结构清晰",
-      "移动端响应式优秀",
-      "视觉层次丰富有节奏",
-      "内容承载能力强"
+      "跨列模块可以突出重点内容",
+      "不同大小的卡片对应不同信息量",
+      "图片、数据与简短说明可共享模块网格",
+      "可与品牌字体、色彩和材质规则组合"
     ],
     "prosEn": [
-      "Clear information organization",
-      "Excellent mobile responsiveness",
-      "Rich visual hierarchy with rhythm",
-      "Strong content capacity"
+      "Spanning modules can emphasize priority content",
+      "Different tile sizes can reflect different amounts of information",
+      "Images, data and short copy can share a modular grid",
+      "The layout can combine with brand type, color and material rules"
     ],
     "cons": [
-      "内容需要精心规划",
-      "过于流行容易模板化",
-      "空间分配需要设计功底"
+      "需要先确定每个模块的信息优先级",
+      "手机端必须重新检查内容顺序和跨列规则",
+      "固定卡片高度可能截断长中文和动态内容"
     ],
     "consEn": [
-      "Content needs careful planning",
-      "Over-popularity can be templated",
-      "Space allocation requires design skills"
+      "Each module needs an information priority before layout",
+      "Mobile needs its own content-order and spanning checks",
+      "Fixed tile heights can clip long Chinese copy and dynamic content"
     ],
     "examples": [
       "Apple 产品页",
@@ -546,14 +542,10 @@ export const designStyles: DesignStyle[] = [
     "description": "用大范围柔和渐变组织背景，保留稳定的文字和产品展示区域。让冷暖色带平滑交汇，控制模糊半径与亮度，强调色延续到少量操作。",
     "descriptionEn": "Use broad soft gradients as atmosphere while keeping copy and product areas stable. Blend warm and cool bands smoothly; control blur and luminance and carry accent color into select actions.",
     "tags": [
-      "现代",
-      "流行",
-      "热门"
+      "现代"
     ],
     "tagsEn": [
-      "Modern",
-      "Trendy",
-      "Hot"
+      "Modern"
     ],
     "features": [
       "构图 - 用大范围柔和渐变组织背景，保留稳定的文字和产品展示区域。",
@@ -578,26 +570,26 @@ export const designStyles: DesignStyle[] = [
       "Tech conference pages"
     ],
     "pros": [
-      "专业感与情绪张力兼得",
-      "极易与品牌色结合",
-      "实现成熟 - 纯 CSS 可达",
-      "转化率经过市场验证"
+      "大范围渐变可为内容提供氛围层",
+      "色带可以从既有品牌色延伸",
+      "渐变与模糊可用 CSS 表达",
+      "稳定的前景表面可承接产品和主操作"
     ],
     "prosEn": [
-      "Professional yet emotive",
-      "Easy to adapt to brand colors",
-      "Mature technique - pure CSS",
-      "Market-proven conversion"
+      "Broad gradients can provide an atmospheric content layer",
+      "Color bands can be derived from existing brand colors",
+      "Gradients and blur can be expressed in CSS",
+      "Stable foreground surfaces can hold the product and primary action"
     ],
     "cons": [
-      "同质化严重 - 满街都是",
-      "渐变色彩管理有门槛",
-      "过度使用会显得浮夸"
+      "相近的渐变需要配合排版才能区分品牌",
+      "文字背景变化时需要逐处检查对比",
+      "大面积模糊或动画需在目标设备上检查渲染"
     ],
     "consEn": [
-      "Heavily saturated - it's everywhere",
-      "Gradient color control takes skill",
-      "Overuse reads as flashy"
+      "Similar gradients need typography to distinguish the brand",
+      "Text contrast needs checking as the background changes",
+      "Large blurred or animated regions need rendering checks on target devices"
     ],
     "examples": [
       "Stripe.com",
@@ -666,26 +658,26 @@ export const designStyles: DesignStyle[] = [
       "Creative cultural event pages"
     ],
     "pros": [
-      "极强的艺术表现力",
-      "文化底蕴深厚 - 设计史经典",
-      "色彩运用大胆而和谐",
-      "元素可无限组合变化"
+      "几何形状直接参与版面结构",
+      "字体与形状的比例可以形成节奏",
+      "有限色盘便于建立色彩角色",
+      "重复和变化可形成跨页面的图形语言"
     ],
     "prosEn": [
-      "Extremely strong artistic expression",
-      "Deep cultural heritage - design history classic",
-      "Bold yet harmonious color use",
-      "Elements infinitely combinable"
+      "Geometric forms participate directly in composition",
+      "Proportions between type and form can establish rhythm",
+      "A limited palette supports distinct color roles",
+      "Repetition and variation can form a graphic language across pages"
     ],
     "cons": [
-      "需要专业的配色功底",
-      "过度使用容易显得复古",
-      "商业适用场景相对有限"
+      "形状装饰需要与实际内容保持关系",
+      "鲜明原色需要控制比例与文字对比",
+      "复杂表单和数据页需要收敛装饰密度"
     ],
     "consEn": [
-      "Requires professional color expertise",
-      "Overuse can appear dated",
-      "Limited commercial applications"
+      "Geometric ornament needs a relationship with real content",
+      "Vivid primaries need controlled proportions and text contrast",
+      "Complex forms and data views need restrained ornament density"
     ],
     "examples": [
       "Bauhaus-Archiv Berlin",
@@ -750,26 +742,26 @@ export const designStyles: DesignStyle[] = [
       "Family and parenting apps"
     ],
     "pros": [
-      "温暖亲切的情感连接",
-      "可持续理念的天然载体",
-      "大众接受度极高",
-      "跨文化适应性好"
+      "暖白与自然材质可以共享柔和底色",
+      "生活场景图能解释商品的实际使用方式",
+      "留白为商品细节和说明保留空间",
+      "木色、织物与绿植可形成材质层次"
     ],
     "prosEn": [
-      "Warm and friendly emotional connection",
-      "Natural vehicle for sustainability",
-      "Extremely high mass acceptance",
-      "Good cross-cultural adaptability"
+      "Warm whites and natural materials can share a gentle foundation",
+      "Everyday imagery can explain how a product is used",
+      "Whitespace leaves room for product details and explanations",
+      "Wood, textiles and plants can create material layers"
     ],
     "cons": [
-      "过于流行导致同质化",
-      "可能缺乏视觉冲击力",
-      "不适合科技感需求强的场景"
+      "只用米色卡片可能缺少内容区分",
+      "低饱和配色需要保留明确的操作对比",
+      "自然素材需要一致的光线、比例与来源授权"
     ],
     "consEn": [
-      "Over-popularity leads to homogeneity",
-      "May lack visual impact",
-      "Not for high-tech contexts"
+      "Beige cards alone may not distinguish content",
+      "Muted colors still need distinct action contrast",
+      "Natural imagery needs consistent lighting, proportions and licensed sources"
     ],
     "examples": [
       "IKEA 宜家",
@@ -806,14 +798,10 @@ export const designStyles: DesignStyle[] = [
     "description": "用清晰的信息分区、粗边框和强烈层级组织内容。本例用黑色硬边阴影、鲜明色块和粗体标题，按下时阴影收缩。",
     "descriptionEn": "Organize content with clear regions, heavy borders and emphatic hierarchy. This study uses black hard-edged shadows, bold color blocks and heavy headings; shadows contract on press.",
     "tags": [
-      "前卫",
-      "流行",
-      "热门"
+      "前卫"
     ],
     "tagsEn": [
-      "Avant-garde",
-      "Trendy",
-      "Hot"
+      "Avant-garde"
     ],
     "features": [
       "构图 - 用清晰的信息分区、粗边框和强烈层级组织内容。",
@@ -838,26 +826,26 @@ export const designStyles: DesignStyle[] = [
       "Hackathon projects"
     ],
     "pros": [
-      "个性鲜明 - 辨识度极高",
-      "开发友好 - CSS 简单直接",
-      "当前非常流行 - 潮流前沿",
-      "深色模式适配良好"
+      "粗边框能明确划分内容与控件",
+      "硬阴影与按下位移形成可见的状态变化",
+      "色块与粗体标题提供鲜明层级",
+      "边框、偏移与阴影可用 CSS 变量统一"
     ],
     "prosEn": [
-      "Distinctive personality - highly recognizable",
-      "Dev-friendly - simple and direct CSS",
-      "Currently very trendy - cutting edge",
-      "Good dark mode adaptation"
+      "Heavy borders clearly separate content and controls",
+      "Hard shadows and pressed offsets create visible state changes",
+      "Color blocks and heavy headings provide emphatic hierarchy",
+      "Borders, offsets and shadows can share CSS variables"
     ],
     "cons": [
-      "可能显得粗糙未完成",
-      "视觉冲击过强 - 不耐看",
-      "企业客户接受度有限"
+      "边框与阴影过密会挤压内容空间",
+      "强烈配色需要逐一检查文字与状态对比",
+      "迁移到表格和复杂表单时需降低装饰密度"
     ],
     "consEn": [
-      "May appear rough and unfinished",
-      "Visual impact too strong - not eye-friendly",
-      "Limited enterprise client acceptance"
+      "Dense borders and shadows can crowd the content",
+      "Strong colors require individual text and state contrast checks",
+      "Tables and complex forms need reduced ornament density"
     ],
     "examples": [
       "Figma Community",
@@ -924,26 +912,26 @@ export const designStyles: DesignStyle[] = [
       "Social media visual content"
     ],
     "pros": [
-      "极强的视觉冲击力",
-      "品牌识别度极高",
-      "实现技术门槛低",
-      "适合大规模视觉系统"
+      "统一色调映射可串联不同图像",
+      "明暗两组色调形成明确的图文关系",
+      "可用 CSS 或预处理图像实现",
+      "色调规则可延伸到海报与页面分区"
     ],
     "prosEn": [
-      "Extremely strong visual impact",
-      "Very high brand recognition",
-      "Low technical implementation barrier",
-      "Suitable for large-scale visual systems"
+      "A shared tonal mapping can connect different images",
+      "Two tonal families establish clear image and type relationships",
+      "The treatment can use CSS or preprocessed imagery",
+      "Tonal rules can extend to posters and page regions"
     ],
     "cons": [
-      "色彩组合选择受限",
-      "长时间观看易疲劳",
-      "原图质量影响效果"
+      "不同原图需要分别检查明暗层次",
+      "品牌色组合可能无法保留图像细节",
+      "正文与状态不应被迫压缩到两种色值"
     ],
     "consEn": [
-      "Limited color combination choices",
-      "Causes fatigue with prolonged viewing",
-      "Original image quality affects results"
+      "Each source image needs a tonal-range check",
+      "A brand color pair may lose image detail",
+      "Body copy and states should not be forced into two discrete colors"
     ],
     "examples": [
       "Spotify Wrapped",
@@ -1012,26 +1000,26 @@ export const designStyles: DesignStyle[] = [
       "Meditation and wellness apps"
     ],
     "pros": [
-      "独特的东方禅意美学",
-      "极致的高级感与宁静",
-      "情感共鸣强烈",
-      "与可持续理念天然契合"
+      "留白与细栏线可以形成缓慢阅读节奏",
+      "自然材质与纸色支持克制的表面表达",
+      "文字长度可参与构图比例",
+      "小面积强调色能保留清楚的重点"
     ],
     "prosEn": [
-      "Unique Eastern Zen aesthetics",
-      "Ultimate premium feel and tranquility",
-      "Strong emotional resonance",
-      "Natural fit with sustainability"
+      "Whitespace and fine rules can establish a measured reading rhythm",
+      "Natural materials and paper tones support restrained surfaces",
+      "Copy length can inform compositional proportions",
+      "Small accent areas can preserve a clear focus"
     ],
     "cons": [
-      "文化理解有门槛",
-      "过度留白可能显得空洞",
-      "需要高质量的内容支撑"
+      "文化意象需要结合内容理解而非简单拼贴",
+      "过量留白可能让必要信息离开首个阅读区",
+      "竖排、衬线和字体回退需要检查中文长文"
     ],
     "consEn": [
-      "Cultural understanding has barriers",
-      "Excessive whitespace may seem empty",
-      "Requires high-quality content support"
+      "Cultural imagery needs contextual understanding rather than collage",
+      "Excessive whitespace can push essential information out of the initial reading area",
+      "Vertical text, serifs and font fallbacks need long Chinese-copy checks"
     ],
     "examples": [
       "Muji 无印良品",
@@ -1096,26 +1084,26 @@ export const designStyles: DesignStyle[] = [
       "Fintech brand humanization"
     ],
     "pros": [
-      "友好亲和的品牌感知",
-      "打破网格的视觉新鲜感",
-      "适配性强 - 可融合多种风格",
-      "动画实现相对简单"
+      "不对称曲线可连接不同内容区域",
+      "自然图像与温和色彩形成连续表面",
+      "形状可作为内容之外的辅助视觉层",
+      "曲率和留白规则可与现有品牌系统组合"
     ],
     "prosEn": [
-      "Friendly and approachable brand perception",
-      "Fresh visuals that break the grid",
-      "Highly adaptable - blends with many styles",
-      "Relatively simple animation implementation"
+      "Asymmetric curves can connect content regions",
+      "Natural images and gentle colors create continuous surfaces",
+      "Shapes can act as a supporting layer around the content",
+      "Curvature and spacing rules can combine with an existing brand system"
     ],
     "cons": [
-      "响应式设计有挑战",
-      "过度使用容易杂乱",
-      "SVG 复杂度影响性能"
+      "曲线裁切和叠放需要单独处理窄屏",
+      "装饰形状不能挤压正文或点击目标",
+      "复杂路径和形变动画需检查目标设备渲染"
     ],
     "consEn": [
-      "Responsive design challenges",
-      "Overuse can become messy",
-      "SVG complexity affects performance"
+      "Curved crops and overlaps need separate narrow-screen handling",
+      "Decorative shapes must not crowd copy or targets",
+      "Complex paths and morphing motion need target-device rendering checks"
     ],
     "examples": [
       "Stripe.com",
@@ -1153,12 +1141,10 @@ export const designStyles: DesignStyle[] = [
     "descriptionEn": "Place floating navigation and controls above a clear content layer; avoid turning all content into glass. Focus on lensing, edge highlights, adaptive shadows and legibility over changing content; both light and dark contexts are valid.",
     "tags": [
       "现代",
-      "热门",
       "前卫"
     ],
     "tagsEn": [
       "Modern",
-      "Hot",
       "Avant-garde"
     ],
     "features": [
@@ -1184,26 +1170,26 @@ export const designStyles: DesignStyle[] = [
       "AR/VR spatial interfaces"
     ],
     "pros": [
-      "紧贴 Apple 最新设计趋势",
-      "通透高级的未来感",
-      "层级清晰而不依赖投影",
-      "深色场景下极具沉浸感"
+      "浮动控件与内容层可以明确分离",
+      "边缘高光可标示材质轮廓",
+      "透过背景的变化可表现空间层次",
+      "可以保留实色内容区承载长文与数据"
     ],
     "prosEn": [
-      "Aligned with Apple's latest design direction",
-      "Translucent, premium, futuristic",
-      "Clear hierarchy without heavy shadows",
-      "Deeply immersive in dark contexts"
+      "Floating controls can be separated clearly from content",
+      "Edge highlights can describe the material boundary",
+      "Visible background variation can express spatial layers",
+      "Solid content areas can carry long copy and data"
     ],
     "cons": [
-      "浏览器兼容性要求高 - backdrop-filter",
-      "低对比场景有可读性风险",
-      "多层模糊有性能开销"
+      "CSS 网页效果只能近似原生材质",
+      "明暗背景变化时需要检查文字与图标对比",
+      "需提供不支持模糊时的实色回退并实测渲染"
     ],
     "consEn": [
-      "High browser requirements - backdrop-filter",
-      "Readability risk in low contrast",
-      "Performance cost of layered blur"
+      "A CSS web treatment only approximates native material",
+      "Text and icon contrast need checking over changing light and dark backgrounds",
+      "Provide a solid fallback without blur support and measure rendering on target devices"
     ],
     "examples": [
       "iOS 26",
@@ -1270,26 +1256,26 @@ export const designStyles: DesignStyle[] = [
       "Brand content hubs"
     ],
     "pros": [
-      "阅读体验极佳",
-      "永不过时的优雅",
-      "内容权威感强",
-      "对图片素材依赖低"
+      "报头、栏线与图片说明建立文章层级",
+      "正文栏宽与行距可围绕阅读内容调整",
+      "字体对比可以承担主要视觉表达",
+      "出处和图注有明确的版面位置"
     ],
     "prosEn": [
-      "Excellent reading experience",
-      "Timeless elegance",
-      "Strong editorial authority",
-      "Low dependency on imagery"
+      "Mastheads, rules and captions establish article hierarchy",
+      "Body measure and line spacing can be tuned to the reading content",
+      "Typographic contrast can carry the main visual expression",
+      "Attribution and captions have defined positions in the composition"
     ],
     "cons": [
-      "对文字质量要求极高",
-      "视觉冲击力偏弱",
-      "多栏布局响应式改造繁琐"
+      "长文需要实际内容验证而非占位短句",
+      "多栏内容必须定义手机端的阅读顺序",
+      "中文衬线回退和混排需要逐断点检查"
     ],
     "consEn": [
-      "Demands high-quality writing",
-      "Modest visual impact",
-      "Column layouts are fussy responsively"
+      "Long-form layouts need real copy rather than short placeholders",
+      "Multi-column content needs an explicit mobile reading order",
+      "Chinese serif fallbacks and mixed scripts need checks at each breakpoint"
     ],
     "examples": [
       "NYTimes.com",
@@ -1354,28 +1340,28 @@ export const designStyles: DesignStyle[] = [
       "Academic research websites"
     ],
     "pros": [
-      "极致的性能 - 几乎零依赖",
-      "强烈的视觉冲击与记忆点",
-      "反叛精神的完美载体",
-      "开发成本极低"
+      "显露链接与直接文档结构让导航可见",
+      "文字、细线与直角可以构成完整表面",
+      "可采用浏览器原生控件与系统字体",
+      "内容密度可通过段落和分隔线组织"
     ],
     "prosEn": [
-      "Ultimate performance - near zero dependencies",
-      "Strong visual impact and memorability",
-      "Perfect vehicle for rebellious spirit",
-      "Extremely low development cost"
+      "Visible links and direct document structure expose navigation",
+      "Type, fine rules and square corners can form a complete surface language",
+      "Native browser controls and system fonts are usable choices",
+      "Paragraphs and dividers can organize dense content"
     ],
     "cons": [
-      "用户体验可能极差",
-      "商业客户难以接受",
-      "可访问性需要特别注意",
-      "容易被误认为「没做完」"
+      "刻意粗粝仍需明确的层级与阅读顺序",
+      "原生控件的外观在不同浏览器中有差异",
+      "实验排版不能遮挡焦点、链接或触控目标",
+      "品牌表达需要与功能页面的日常使用协调"
     ],
     "consEn": [
-      "User experience can be terrible",
-      "Hard for commercial clients to accept",
-      "Accessibility needs special attention",
-      "Often mistaken for 'unfinished'"
+      "Deliberate roughness still needs hierarchy and reading order",
+      "Native control appearance varies across browsers",
+      "Experimental layout must not obscure focus, links or touch targets",
+      "Brand expression needs to work with everyday functional use"
     ],
     "examples": [
       "brutalistwebsites.com",
@@ -1440,26 +1426,26 @@ export const designStyles: DesignStyle[] = [
       "Coding education platforms"
     ],
     "pros": [
-      "开发者受众天然好感",
-      "实现成本低 - 几乎零图片",
-      "性能极佳",
-      "氛围一致性极强"
+      "命令、输出与日志可形成明确的内容结构",
+      "等宽字体便于对齐短命令与数字",
+      "有限色盘可为成功、失败和提示分配角色",
+      "可主要依靠文字而非图片建立氛围"
     ],
     "prosEn": [
-      "Instant developer credibility",
-      "Cheap to build - nearly zero images",
-      "Excellent performance",
-      "Powerful atmospheric coherence"
+      "Commands, output and logs can provide a clear content structure",
+      "Monospace type helps align short commands and numbers",
+      "A limited palette can assign roles to success, error and hints",
+      "Type can establish the atmosphere without relying on images"
     ],
     "cons": [
-      "大众用户有阅读门槛",
-      "长文阅读易疲劳",
-      "绿色单色情绪单一"
+      "命令隐喻需要为不了解终端的用户补充说明",
+      "长文应调整行宽与字体以避免拥挤",
+      "闪烁光标和扫描线需要关闭或减弱选项"
     ],
     "consEn": [
-      "Steep readability for general users",
-      "Fatiguing for long reads",
-      "Monochrome green limits emotional range"
+      "Command metaphors need explanations for people unfamiliar with terminals",
+      "Long copy needs suitable measure and type to avoid crowding",
+      "Blinking cursors and scanlines need a disable or reduced-motion option"
     ],
     "examples": [
       "Warp.dev",
@@ -1526,26 +1512,26 @@ export const designStyles: DesignStyle[] = [
       "Social media marketing assets"
     ],
     "pros": [
-      "极具辨识度和记忆点",
-      "充满活力与年轻感",
-      "话题性与社交传播力强",
-      "与当下 Y2K 复古潮流契合"
+      "点、线与波浪可组成重复的图形语言",
+      "撞色能划分不同内容区域",
+      "图案密度可以围绕主标题分配",
+      "几何元素可延伸为活动和商品图形"
     ],
     "prosEn": [
-      "Extremely distinctive and memorable",
-      "Full of vitality and youthfulness",
-      "Strong topic appeal and social shareability",
-      "Aligns with current Y2K retro trends"
+      "Dots, lines and squiggles can form a repeating graphic language",
+      "Clashing colors can separate content regions",
+      "Pattern density can be arranged around the main heading",
+      "Geometry can extend into event and product graphics"
     ],
     "cons": [
-      "视觉冲击过强 - 易疲劳",
-      "严肃场景完全不适用",
-      "风格极端 - 品牌风险大"
+      "正文周围需要安静区域维持可读性",
+      "过多图案会与主要操作争夺注意",
+      "装饰叠放需要检查窄屏裁切与遮挡"
     ],
     "consEn": [
-      "Visual impact too strong - causes fatigue",
-      "Completely unsuitable for serious contexts",
-      "Extreme style - high brand risk"
+      "Body copy needs quiet surrounding areas for readability",
+      "Too many patterns can compete with the primary action",
+      "Decorative overlaps need narrow-screen crop and occlusion checks"
     ],
     "examples": [
       "Ettore Sottsass 作品",
@@ -1610,28 +1596,28 @@ export const designStyles: DesignStyle[] = [
       "Classical music and theaters"
     ],
     "pros": [
-      "极致的高级感与奢华感",
-      "经典永恒 - 100年不过时",
-      "强烈的时代感与故事性",
-      "适合高端定位品牌"
+      "对称轴和阶梯轮廓形成仪式化构图",
+      "细线边框可为内容设置明确框架",
+      "宽字距标题与几何装饰形成呼应",
+      "金属色与深色表面可表现材质对比"
     ],
     "prosEn": [
-      "Ultimate premium and luxury feel",
-      "Timeless classic - 100 years strong",
-      "Strong era feel and storytelling",
-      "Suitable for high-end brand positioning"
+      "Symmetry and stepped outlines create a ceremonial composition",
+      "Fine-line frames can give content a defined structure",
+      "Tracked headlines can echo geometric ornament",
+      "Metallic colors and dark surfaces can express material contrast"
     ],
     "cons": [
-      "容易显得「老派」",
-      "实现细节要求高",
-      "年轻用户可能不感冒",
-      "素材制作成本高"
+      "装饰比例需要随标题长度调整",
+      "细线和金色小字需要检查对比与清晰度",
+      "窄屏需要简化边框与对称布局",
+      "图形、字体和图片应采用一致的时代语汇"
     ],
     "consEn": [
-      "Can appear 'old-fashioned'",
-      "High detail implementation requirements",
-      "May not appeal to young users",
-      "High material production cost"
+      "Ornament proportions need adjustment for headline length",
+      "Fine rules and small gold type need contrast and legibility checks",
+      "Narrow screens need simplified frames and symmetrical layouts",
+      "Graphics, type and imagery need a coherent period vocabulary"
     ],
     "examples": [
       "了不起的盖茨比",
@@ -1666,14 +1652,10 @@ export const designStyles: DesignStyle[] = [
     "description": "把少量半透明面板放在具有颜色与轮廓的背景之前。背景模糊、透明填充、细亮边与适量阴影共同表达磨砂玻璃；背景必须能被感知。",
     "descriptionEn": "Place a small number of translucent panels over a background with visible color and form. Backdrop blur, transparent fills, fine light borders and moderate shadows express frosted glass; the background must remain perceptible.",
     "tags": [
-      "现代",
-      "流行",
-      "热门"
+      "现代"
     ],
     "tagsEn": [
-      "Modern",
-      "Trendy",
-      "Hot"
+      "Modern"
     ],
     "features": [
       "构图 - 把少量半透明面板放在具有颜色与轮廓的背景之前。",
@@ -1698,28 +1680,28 @@ export const designStyles: DesignStyle[] = [
       "Music player interfaces"
     ],
     "pros": [
-      "极强的现代感与科技感",
-      "视觉层次丰富立体",
-      "深色模式表现优异",
-      "用户认知度高"
+      "透明面板可保留背景的色彩与轮廓",
+      "细边框与阴影可区分叠放关系",
+      "局部玻璃可以与稳定的实色内容区组合",
+      "明暗配色均可采用同一材质思路"
     ],
     "prosEn": [
-      "Strong modern and tech feel",
-      "Rich and dimensional visual layers",
-      "Excellent dark mode performance",
-      "High user recognition"
+      "Translucent panels can retain background color and form",
+      "Fine borders and shadows can distinguish overlapping layers",
+      "Local glass surfaces can combine with stable solid content areas",
+      "The material approach can work with light or dark palettes"
     ],
     "cons": [
-      "backdrop-filter 性能开销",
-      "对比度与可读性需要调试",
-      "低端设备渲染卡顿",
-      "Safari 兼容性问题"
+      "背景变化时需要重新检查文本与图标对比",
+      "嵌套模糊层需在目标设备上测量渲染耗时",
+      "不支持 backdrop-filter 时需要实色回退",
+      "透明度过低或过高都会弱化材质与层级"
     ],
     "consEn": [
-      "backdrop-filter performance cost",
-      "Contrast and readability need tuning",
-      "Laggy on low-end devices",
-      "Safari compatibility issues"
+      "Text and icon contrast need rechecking as the background changes",
+      "Nested blur layers need rendering measurements on target devices",
+      "A solid fallback is needed without backdrop-filter support",
+      "Too little or too much transparency can weaken material and hierarchy"
     ],
     "examples": [
       "macOS Big Sur",
@@ -1786,28 +1768,28 @@ export const designStyles: DesignStyle[] = [
       "Vintage shops and collection galleries"
     ],
     "pros": [
-      "独特的神秘氛围感",
-      "强烈的文化底蕴",
-      "适合深度阅读场景",
-      "小众但忠诚的受众"
+      "书籍、纸张与木色可建立阅读场景",
+      "衬线标题与细致的正文层级能够协调",
+      "深木色、墨绿与纸色能划分表面层次",
+      "图注、引文与来源可以融入版面"
     ],
     "prosEn": [
-      "Unique mysterious atmosphere",
-      "Strong cultural depth",
-      "Suitable for deep reading contexts",
-      "Niche but loyal audience"
+      "Books, paper and wood tones can establish a reading setting",
+      "Serif headings can coordinate with a detailed body hierarchy",
+      "Dark wood, forest green and parchment can separate surfaces",
+      "Captions, quotations and sources can be integrated into the layout"
     ],
     "cons": [
-      "受众相对小众",
-      "季节性偏秋冬",
-      "可能显得沉重压抑",
-      "图片素材要求特殊"
+      "深色底不能牺牲正文和次要信息对比",
+      "材质纹理需要避免干扰长文",
+      "旧书与艺术图像需要核实素材授权",
+      "现代操作控件需要保持明确的可点击状态"
     ],
     "consEn": [
-      "Relatively niche audience",
-      "Seasonal bias toward fall/winter",
-      "Can feel heavy and oppressive",
-      "Special image material requirements"
+      "Dark surfaces must preserve body and secondary-text contrast",
+      "Material textures must avoid interfering with long copy",
+      "Old-book and art imagery needs source-license checks",
+      "Modern controls still need explicit interactive states"
     ],
     "examples": [
       "Oxford University Press",
@@ -1874,26 +1856,26 @@ export const designStyles: DesignStyle[] = [
       "Playful developer sites"
     ],
     "pros": [
-      "辨识度拉满",
-      "游戏玩家情感共鸣强",
-      "图形资产体积小",
-      "容错率高 - 粗糙即风格"
+      "统一像素单位可以连接字体与图形",
+      "阶梯边缘与硬阴影形成一致轮廓",
+      "HUD 模式可组织状态与游戏化信息",
+      "有限色盘支持明确的状态角色"
     ],
     "prosEn": [
-      "Maximum recognizability",
-      "Strong gamer resonance",
-      "Tiny graphic assets",
-      "Forgiving - roughness is the style"
+      "A shared pixel unit can connect type and graphics",
+      "Stepped edges and hard shadows create consistent outlines",
+      "HUD patterns can organize status and game-like information",
+      "A limited palette supports distinct state roles"
     ],
     "cons": [
-      "精致像素画其实很费工",
-      "正文可读性受限",
-      "严肃场景完全不适用"
+      "像素资产需要人工检查比例与整数缩放",
+      "正文应采用可读字体并检查中文回退",
+      "跳帧动画不能影响关键文字与操作"
     ],
     "consEn": [
-      "Good pixel art is laborious",
-      "Limited body-text readability",
-      "Unusable in serious contexts"
+      "Pixel assets need manual checks for proportions and integer scaling",
+      "Body copy needs readable type and checked Chinese fallbacks",
+      "Stepped motion must not interfere with essential copy or controls"
     ],
     "examples": [
       "Celeste",
@@ -1958,28 +1940,28 @@ export const designStyles: DesignStyle[] = [
       "VR/AR technology showcases"
     ],
     "pros": [
-      "沉浸感极强 - 氛围感满分",
-      "年轻用户共鸣度高",
-      "话题性与传播力强",
-      "视觉冲击力一流"
+      "深色区域与少量霓虹强调形成明暗层级",
+      "切角与技术标签可形成统一图形语汇",
+      "非对称区域可安排任务、状态与叙事内容",
+      "短暂故障效果可用于非关键装饰"
     ],
     "prosEn": [
-      "Extremely immersive - perfect atmosphere",
-      "High resonance with young users",
-      "Strong topic appeal and shareability",
-      "First-class visual impact"
+      "Dark regions and selective neon accents establish light-dark hierarchy",
+      "Clipped corners and technical labels can form a shared visual vocabulary",
+      "Asymmetric regions can arrange tasks, status and narrative content",
+      "Brief glitch effects can be used for nonessential decoration"
     ],
     "cons": [
-      "可读性挑战 - 深色发光文字",
-      "不适合商务严肃场景",
-      "容易过度设计",
-      "性能消耗较高"
+      "发光边缘不能替代正文对比与焦点标识",
+      "技术装饰需要与真实内容建立关系",
+      "持续动画需有暂停和减弱动态效果的处理",
+      "多重滤镜与大图需在目标设备上测量"
     ],
     "consEn": [
-      "Readability challenges - glowing dark text",
-      "Not for serious business contexts",
-      "Easy to over-design",
-      "Higher performance consumption"
+      "Glowing edges cannot replace text contrast and focus indicators",
+      "Technical decoration needs a relationship with real content",
+      "Continuous motion needs pause and reduced-motion handling",
+      "Multiple filters and large images need measurements on target devices"
     ],
     "examples": [
       "Cyberpunk 2077",
@@ -2015,13 +1997,11 @@ export const designStyles: DesignStyle[] = [
     "descriptionEn": "Combine natural imagery and optimistic technology in one bright scene. Sky, water, grass green, translucent highlights and soft corners, with consistent lighting and reflection.",
     "tags": [
       "复古",
-      "活泼",
-      "流行"
+      "活泼"
     ],
     "tagsEn": [
       "Vintage",
-      "Playful",
-      "Trendy"
+      "Playful"
     ],
     "features": [
       "构图 - 让自然意象与乐观的技术界面共享一幅明亮场景。",
@@ -2046,26 +2026,26 @@ export const designStyles: DesignStyle[] = [
       "Y2K revival campaign pages"
     ],
     "pros": [
-      "强烈的怀旧情绪共鸣",
-      "乐观治愈的独特氛围",
-      "在扁平化泛滥中极具辨识度",
-      "自带社交传播话题性"
+      "自然图像与光泽表面可共享明亮场景",
+      "天空、水与绿植可以连接不同页面区域",
+      "高光与反射可表达控件体积",
+      "蓝绿基底与白色内容层可以相互区分"
     ],
     "prosEn": [
-      "Powerful nostalgia resonance",
-      "Uniquely optimistic, healing mood",
-      "Stands out in a flat-design world",
-      "Built-in social virality"
+      "Natural imagery and glossy surfaces can share a bright scene",
+      "Sky, water and plants can connect page regions",
+      "Highlights and reflections can express control volume",
+      "Blue-green foundations can be separated from white content layers"
     ],
     "cons": [
-      "分寸难拿捏 - 易显廉价过时",
-      "光泽细节工作量大",
-      "不适合严肃商务场景"
+      "光照、反射与图像需要保持方向一致",
+      "光泽不能弱化文字、边界和操作状态",
+      "自然素材的裁切与授权需要逐项确认"
     ],
     "consEn": [
-      "Hard to balance - can look cheap or dated",
-      "Gloss details are labor-intensive",
-      "Poor fit for serious business"
+      "Lighting, reflections and imagery need consistent direction",
+      "Gloss must preserve copy, boundaries and control states",
+      "Natural image crops and licenses need individual checks"
     ],
     "examples": [
       "Windows Vista",
@@ -2130,26 +2110,26 @@ export const designStyles: DesignStyle[] = [
       "Brand mascot merchandise"
     ],
     "pros": [
-      "极高的亲和力与可爱感",
-      "独特的 3D 视觉效果",
-      "适合年轻活泼的品牌",
-      "社交分享率高"
+      "内高光与外阴影可以表现柔软体积",
+      "圆润角色可成为局部视觉重点",
+      "统一光照可以连接不同图形与控件",
+      "材质重点可与清楚的文字表面组合"
     ],
     "prosEn": [
-      "Extremely high affinity and cuteness",
-      "Unique 3D visual effects",
-      "Suitable for young and playful brands",
-      "High social share rate"
+      "Inset highlights and cast shadows can express soft volume",
+      "Rounded characters can provide a local visual focus",
+      "Consistent lighting can connect graphics and controls",
+      "Material focal points can combine with clear text surfaces"
     ],
     "cons": [
-      "实现成本较高 - 需 3D 工具",
-      "性能开销大",
-      "不适合严肃商业场景"
+      "复杂角色可能需要专门的插画或 3D 资产",
+      "叠加阴影与大资产需在目标设备上测量",
+      "膨胀轮廓不能压缩表单和点击区域"
     ],
     "consEn": [
-      "High implementation cost - needs 3D tools",
-      "Large performance overhead",
-      "Unsuitable for serious business contexts"
+      "Complex characters may need dedicated illustration or 3D assets",
+      "Layered shadows and large assets need target-device measurements",
+      "Inflated contours must not crowd forms and target areas"
     ],
     "examples": [
       "Android 12 Logo",
@@ -2214,28 +2194,28 @@ export const designStyles: DesignStyle[] = [
       "NFTs and digital collectibles"
     ],
     "pros": [
-      "独特的亚文化标识",
-      "怀旧情怀共鸣强烈",
-      "社群认同感强",
-      "视觉元素丰富可混搭"
+      "复古窗口与透视网格可构成场景结构",
+      "粉、青、紫可形成统一色调关系",
+      "超现实图像可以承接明确的叙事主题",
+      "前景文字层可以与装饰场景分离"
     ],
     "prosEn": [
-      "Unique subculture identity",
-      "Strong nostalgic resonance",
-      "Strong community identification",
-      "Rich visual elements for mixing"
+      "Retro windows and perspective grids can structure a scene",
+      "Pink, cyan and violet can form a shared tonal relationship",
+      "Surreal imagery can support a defined narrative theme",
+      "Foreground text can be separated from the decorative scene"
     ],
     "cons": [
-      "极度小众 - 受众有限",
-      "容易显得过时",
-      "商业应用场景少",
-      "版权素材风险"
+      "需要说明文化语境，避免只堆积复古符号",
+      "荧光色与网格可能干扰正文阅读",
+      "窗口叠放需要检查窄屏阅读顺序",
+      "雕塑、音乐和旧界面素材需要核实授权"
     ],
     "consEn": [
-      "Extremely niche - limited audience",
-      "Easily appears dated",
-      "Few commercial applications",
-      "Copyright material risks"
+      "The cultural context needs explanation beyond accumulated retro symbols",
+      "Fluorescent colors and grids can interfere with body copy",
+      "Overlapping windows need narrow-screen reading-order checks",
+      "Sculpture, music and old-interface assets need license checks"
     ],
     "examples": [
       "Macintosh Plus - Floral Shoppe",
@@ -2298,28 +2278,28 @@ export const designStyles: DesignStyle[] = [
       "Celebrity official sites"
     ],
     "pros": [
-      "视觉盛宴 - 感官刺激强烈",
-      "品牌个性表达的极致",
-      "情感丰富有感染力",
-      "适合讲述复杂故事"
+      "多尺度文字与图像可形成丰富层级",
+      "重复图案可以串联高密度内容",
+      "叠放关系可支持多个叙事线索",
+      "鲜明色彩与静区可共同安排视觉节奏"
     ],
     "prosEn": [
-      "Visual feast - intense sensory stimulation",
-      "Ultimate brand personality expression",
-      "Rich emotions and infectious",
-      "Suitable for complex storytelling"
+      "Multiple type and image scales can form a rich hierarchy",
+      "Repeating patterns can connect dense content",
+      "Layering can support several narrative threads",
+      "Vivid colors and quiet regions can arrange visual rhythm together"
     ],
     "cons": [
-      "极易杂乱失控",
-      "加载性能差",
-      "需要顶级设计功底",
-      "可用性可能受影响"
+      "需要明确主视觉与主操作的位置",
+      "图片数量和尺寸需要独立预算与测量",
+      "新增内容时需要重新检查遮挡与层级",
+      "手机端需要重排而非缩小整幅桌面构图"
     ],
     "consEn": [
-      "Very easy to become chaotic",
-      "Poor loading performance",
-      "Requires top-tier design skills",
-      "Usability may be affected"
+      "The dominant visual and primary action need explicit positions",
+      "Image count and size need a separate budget and measurements",
+      "New content requires renewed occlusion and hierarchy checks",
+      "Mobile needs recomposition rather than a scaled desktop layout"
     ],
     "examples": [
       "Gucci.com",
@@ -2386,28 +2366,28 @@ export const designStyles: DesignStyle[] = [
       "Art installation interactive sites"
     ],
     "pros": [
-      "极强的视觉吸引力与记忆点",
-      "叙事能力强 - 讲故事神器",
-      "独特的品牌表达方式",
-      "获奖作品常客"
+      "文字运动可以承担内容节奏",
+      "位移、字重和字距可对应叙事阶段",
+      "静态构图可保留相同的信息层级",
+      "局部动效能与既有品牌字体配合"
     ],
     "prosEn": [
-      "Extremely strong visual appeal and memorability",
-      "Strong narrative ability - storytelling tool",
-      "Unique brand expression method",
-      "Regular award winner"
+      "Type motion can carry the rhythm of the content",
+      "Displacement, weight and spacing can follow narrative stages",
+      "A static composition can retain the same information hierarchy",
+      "Local motion can work with existing brand type"
     ],
     "cons": [
-      "性能开销大 - 需要优化",
-      "可访问性挑战 - motion 敏感用户",
-      "内容可能被动画淹没",
-      "SEO 不友好"
+      "动画需要检查目标设备上的渲染和输入响应",
+      "必须提供可读静态内容并尊重减弱动态效果",
+      "持续运动需要暂停控制，不能淹没主操作",
+      "关键文字应存在于语义化文档中并可被检索"
     ],
     "consEn": [
-      "Large performance overhead - needs optimization",
-      "Accessibility challenges - motion-sensitive users",
-      "Content may be overwhelmed by animation",
-      "Not SEO-friendly"
+      "Motion needs rendering and input-response checks on target devices",
+      "Readable static content and reduced-motion preferences must be supported",
+      "Continuous motion needs pause controls and must not obscure the primary action",
+      "Essential copy should remain in the semantic document and be searchable"
     ],
     "examples": [
       "Apple 产品发布会",
@@ -2443,13 +2423,11 @@ export const designStyles: DesignStyle[] = [
     "descriptionEn": "Break selected alignment and typographic conventions while keeping navigation and content order understandable. Clashing primaries, displaced labels and mixed type create controlled tension in this study.",
     "tags": [
       "前卫",
-      "个性",
-      "流行"
+      "个性"
     ],
     "tagsEn": [
       "Avant-garde",
-      "Distinctive",
-      "Trendy"
+      "Distinctive"
     ],
     "features": [
       "构图 - 有意打破局部对齐和字体惯例，同时让导航与内容顺序可理解。",
@@ -2474,28 +2452,28 @@ export const designStyles: DesignStyle[] = [
       "Social media viral marketing"
     ],
     "pros": [
-      "极强的话题性与传播力",
-      "精准触达年轻受众",
-      "品牌个性表达的极致",
-      "社交媒体分享率高"
+      "局部错位可以与稳定的阅读结构形成反差",
+      "字体混搭可承接明确的表达主题",
+      "冲突色与标签可建立独立图形语汇",
+      "实验区域可以限制在局部内容中"
     ],
     "prosEn": [
-      "Extremely high topic appeal and shareability",
-      "Precisely reaches young audiences",
-      "Ultimate brand personality expression",
-      "High social media share rate"
+      "Local displacement can create tension against a stable reading structure",
+      "Mixed type can support a defined expressive theme",
+      "Clashing colors and labels can establish a distinct graphic vocabulary",
+      "Experimental treatment can be limited to local content regions"
     ],
     "cons": [
-      "可用性几乎为零",
-      "极易过时 - 生命周期短",
-      "品牌风险极高",
-      "大众接受度低"
+      "导航、焦点和点击目标仍需清楚可用",
+      "打破的规则应有表达目的并写入规范",
+      "中文长标题与字体回退可能改变错位关系",
+      "多页面扩展需要界定哪些规则可以变化"
     ],
     "consEn": [
-      "Near-zero usability",
-      "Easily outdated - short lifecycle",
-      "Extremely high brand risk",
-      "Low mass acceptance"
+      "Navigation, focus and targets still need to be clear and usable",
+      "Broken conventions need an expressive purpose recorded in the specification",
+      "Long Chinese headlines and font fallbacks can change displacement relationships",
+      "Multi-page expansion needs boundaries for which rules may vary"
     ],
     "examples": [
       "Charli XCX - Brat",
@@ -2560,28 +2538,28 @@ export const designStyles: DesignStyle[] = [
       "Personal projects and experiments"
     ],
     "pros": [
-      "独特的触感与物理感",
-      "视觉上柔和舒适",
-      "CSS 实现相对简单",
-      "在深色模式下表现尚可"
+      "成对阴影可以表达同一基底上的凸起与凹陷",
+      "共享光照方向可连接不同控件",
+      "材质表达可以集中在少量重点控件",
+      "实线边界和文字标签可补充状态表达"
     ],
     "prosEn": [
-      "Unique tactile and physical feel",
-      "Visually soft and comfortable",
-      "Relatively simple CSS implementation",
-      "Acceptable in dark mode"
+      "Paired shadows can express raised and inset forms on one base",
+      "A shared lighting direction can connect controls",
+      "Material treatment can be concentrated on a few focal controls",
+      "Solid boundaries and text labels can supplement state expression"
     ],
     "cons": [
-      "严重的可访问性问题 - WCAG 不达标",
-      "按钮/输入框难以识别",
-      "已逐渐被行业淘汰",
-      "实际生产环境中罕见"
+      "低对比阴影不能单独承担边界和状态",
+      "按钮与输入框需要额外的焦点、标签和选中标识",
+      "浅色与深色主题需要分别调整阴影和对比",
+      "高对比偏好与无阴影回退需要保留可辨识边界"
     ],
     "consEn": [
-      "Severe accessibility issues - WCAG non-compliant",
-      "Buttons/inputs hard to identify",
-      "Gradually phased out by industry",
-      "Rare in production environments"
+      "Low-contrast shadows cannot carry boundaries and states alone",
+      "Buttons and inputs need additional focus, labels and selection indicators",
+      "Light and dark themes need separate shadow and contrast tuning",
+      "High-contrast preferences and shadow-free fallbacks need identifiable boundaries"
     ],
     "examples": [
       "Dribbble 概念作品",
@@ -2607,4 +2585,6 @@ export const designStyles: DesignStyle[] = [
       "#A3B1C6"
     ]
   }
-];
+] satisfies DesignStyle[];
+
+export type StyleId = (typeof designStyles)[number]['id'];

@@ -7,6 +7,7 @@ import { StyleSidebar } from '../components/StyleSidebar';
 import { StyleDetailContent } from '../components/StyleDetailContent';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { useProjectStore } from '../project/store';
 
 const headerBtnClass =
   'p-2 rounded-lg transition-colors text-gray-600 hover:text-black hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800';
@@ -15,12 +16,13 @@ export function StyleDetailPage() {
   const { styleId } = useParams<{ styleId: string }>();
   const { theme, language, toggleLanguage } = useAppStore();
   const isMobile = useIsMobile();
+  const shortlist = useProjectStore(state => state.shortlist);
 
   const style = designStyles.find(s => s.id === styleId);
 
   // usePageMeta 是 hook，必须在提前 return 之前调用
   usePageMeta(
-    style ? `${language === 'zh' ? style.name : style.nameEn} · Design Vibes` : 'Design Vibes',
+    style ? `${language === 'zh' ? style.name : style.nameEn} · Vibe Design` : 'Vibe Design',
     style ? (language === 'zh' ? style.description : style.descriptionEn) : undefined
   );
 
@@ -29,9 +31,7 @@ export function StyleDetailPage() {
     return <Navigate to="/" replace />;
   }
 
-  // 对比入口：当前风格 vs 列表中的下一个风格
-  const currentIndex = designStyles.findIndex(s => s.id === style.id);
-  const compareWith = designStyles[(currentIndex + 1) % designStyles.length];
+  const compareWith = shortlist.find(id => id !== style.id);
 
   return (
     <div className="style-detail-page h-dvh flex flex-col bg-white dark:bg-[#1a1a1a]">
@@ -39,7 +39,7 @@ export function StyleDetailPage() {
       <header className="shrink-0 border-b px-4 py-3 flex items-center justify-between bg-white border-gray-200 dark:bg-[#0f0f0f] dark:border-gray-800">
         <div className="flex items-center gap-2 md:gap-4">
           <Link
-            to="/"
+            to="/#styles-grid"
             className="flex items-center gap-1 md:gap-2 px-2 md:px-3 py-1.5 rounded-lg transition-colors text-gray-600 hover:text-black hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -56,10 +56,10 @@ export function StyleDetailPage() {
         <div className="flex items-center gap-1 md:gap-2">
           {/* Compare */}
           <Link
-            to={`/compare/${style.id}/${compareWith.id}`}
+            to={compareWith ? `/compare/${style.id}/${compareWith}?mode=content` : `/project?style=${style.id}`}
             className={headerBtnClass}
-            title={language === 'zh' ? '对比风格' : 'Compare styles'}
-            aria-label={language === 'zh' ? '对比风格' : 'Compare styles'}
+            title={language === 'zh' ? (compareWith ? '对比我的候选' : '选择第二个候选再对比') : (compareWith ? 'Compare my candidates' : 'Choose another candidate to compare')}
+            aria-label={language === 'zh' ? (compareWith ? '对比我的候选' : '选择第二个候选再对比') : (compareWith ? 'Compare my candidates' : 'Choose another candidate to compare')}
           >
             <Columns2 className="w-4 h-4" />
           </Link>

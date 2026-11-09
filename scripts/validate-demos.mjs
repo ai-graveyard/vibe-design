@@ -46,6 +46,12 @@ for (const id of missingIn(styleIds, demoIds)) errors.push(`缺少 demo：public
 for (const id of missingIn(demoIds, styleIds)) errors.push(`孤儿 demo（styles.ts 无此 id）：public/demos/${id}.html`);
 for (const id of missingIn(styleIds, thumbIds))
   errors.push(`缺少卡片缩略图：public/thumbs/${id}.jpg（运行 pnpm thumbs 生成）`);
+for (const width of [480, 768, 1280]) {
+  for (const id of styleIds) {
+    if (!existsSync(path.join(thumbsDir, String(width), `${id}.webp`)))
+      errors.push(`缺少响应式缩略图：public/thumbs/${width}/${id}.webp（运行 pnpm thumbs 生成）`);
+  }
+}
 
 // 返回所有 @media (hover: hover) 块的 [start, end) 字符区间（花括号配对）
 function hoverMediaRanges(css) {
@@ -100,8 +106,8 @@ for (const id of [...new Set(referenced)]) {
   if (!styleIds.includes(id)) errors.push(`scenes.ts 引用了不存在的风格 id："${id}"`);
 }
 
-// skill 产物（skills/design-vibes/）与风格数据对齐；产物本身由 pnpm skill 重建
-const skillDir = path.join(root, 'skills/design-vibes');
+// skill 产物（skills/vibe-design/）与风格数据对齐；产物本身由 pnpm skill 重建
+const skillDir = path.join(root, 'skills/vibe-design');
 if (existsSync(skillDir)) {
   for (const id of styleIds) {
     if (!existsSync(path.join(skillDir, 'references/styles', `${id}.md`)))

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "2026.09.1",
+  "draft": {
+    "name": "Legacy saved recipe",
+    "baseId": "paper-story",
+    "overrides": {
+      "palette": "forest",
+      "layout": "split"
+    },
+    "content": {
+      "title": "",
+      "description": "",
+      "action": ""
+    }
+  },
+  "resolved": {
+    "selection": {
+      "layout": "split",
+      "palette": "forest",
+      "font": "serif",
+      "density": "airy",
+      "surface": "flat",
+      "motion": "off"
+    },
+    "tokens": {
+      "bg": "#f0f1e9",
+      "surface": "#fafbf5",
+      "text": "#22362c",
+      "muted": "#5d6e61",
+      "accent": "#2e6047",
+      "on-accent": "#ffffff",
+      "line": "#ccd5c9",
+      "success": "#28613e",
+      "danger": "#a12e24",
+      "font-heading": "\"Recipe Serif\", \"Songti SC\", \"Noto Serif CJK SC\", serif",
+      "font-body": "\"Recipe Inter\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "heading-weight": "500",
+      "heading-tracking": "-0.045em",
+      "heading-scale": "1.07",
+      "space": "28px",
+      "gutter": "56px",
+      "row-space": "20px",
+      "radius": "2px",
+      "shadow": "none",
+      "border-width": "1px",
+      "duration": "0ms",
+      "body-size": "15px",
+      "body-leading": "1.65",
+      "target-size": "44px"
+    }
+  }
+}

@@ -4,7 +4,8 @@
 // 也是历史上 demo 最常见的失败方式。测量前注入 animation:none，测的是静态布局终态。
 // 零依赖：CDP 走 Node ≥22 内置的 WebSocket；Chrome 路径按 CHROME_PATH → macOS → PATH 顺序探测。
 import { execFileSync, spawn } from 'node:child_process';
-import { readdirSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -125,7 +126,10 @@ const MEASURE = `(async () => {
 
 const demos = readdirSync(demosDir).filter((f) => f.endsWith('.html')).sort();
 const errors = [];
+const rows=[];
+const startedAt=new Date().toISOString();
 for (const f of demos) {
+  const sourceHash=createHash('sha256').update(readFileSync(path.join(demosDir,f))).digest('hex');
   const loaded = nextLoad();
   await send('Page.navigate', { url: `file://${path.join(demosDir, f)}` });
   await loaded;
@@ -135,6 +139,8 @@ for (const f of demos) {
     returnByValue: true,
   });
   const { scrollWidth, clientWidth } = JSON.parse(res.result.result.value);
+  rows.push({id:f.replace(/\.html$/,''),sourceHash,width:WIDTH,height:HEIGHT,scrollWidth,clientWidth});
+  if(createHash('sha256').update(readFileSync(path.join(demosDir,f))).digest('hex')!==sourceHash)errors.push(`${f}: source changed while validating`);
   if (scrollWidth > clientWidth) {
     errors.push(`public/demos/${f} 在 ${WIDTH}px 下出现横向滚动（scrollWidth ${scrollWidth} > clientWidth ${clientWidth}）`);
   }
@@ -142,6 +148,8 @@ for (const f of demos) {
 
 ws.close();
 await cleanup();
+mkdirSync(path.join(root,'output/render'),{recursive:true});
+writeFileSync(path.join(root,'output/render/report.json'),JSON.stringify({schemaVersion:1,status:errors.length?'failed':'passed',sourceMode:'public-file',startedAt,finishedAt:new Date().toISOString(),rows,errors},null,2)+'\n');
 
 if (errors.length) {
   console.error(`✗ 375px 渲染校验失败（${errors.length} 个问题）：`);

@@ -1,19 +1,29 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
 import { designStyles } from '../data/styles';
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { RecipeGuide } from './RecipeGuide';
+import { MetalTop } from '../components/MetalTop';
+import { StyleThumbnail } from '../components/StyleThumbnail';
 
 export function Hero({ onInstall }: { onInstall: () => void }) {
   const { language } = useAppStore();
   const t = translations[language];
-  const title = "DESIGN VIBES";
+  const title = "VIBE DESIGN";
+  const [compactStudies, setCompactStudies] = useState(() => window.matchMedia('(max-width: 639px)').matches);
 
   const spotlightRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef(0);
 
   useEffect(() => () => cancelAnimationFrame(rafRef.current), []);
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 639px)');
+    const update = () => setCompactStudies(media.matches);
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
 
   // 聚光灯直接写 DOM（CSS 变量 + class），避免 mousemove 触发 React 重渲染
   const handleGridMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -83,9 +93,9 @@ export function Hero({ onInstall }: { onInstall: () => void }) {
               className="pt-4 sm:pt-6 animate-fade-up-blur"
               style={{ animationDelay: '350ms' }}
             >
-              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-12">
+              <div className="hero-metal-layout">
                 {/* Left: Positioning & actions */}
-                <div className="max-w-2xl">
+                <div className="hero-intro-copy">
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-black dark:text-white">
                     {t.hero.valueTitle}
                   </h2>
@@ -94,6 +104,10 @@ export function Hero({ onInstall }: { onInstall: () => void }) {
                   </p>
                   {/* 浏览按钮定位到风格库；安装按需打开，关闭后继续原位置浏览。 */}
                   <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-2.5">
+                    <Link to="/project" className="hero-recipe-cta">
+                      {language === 'zh' ? '为我的网页选风格' : 'Find my visual direction'}
+                      <ArrowRight size={16} />
+                    </Link>
                     <button
                       onClick={scrollToStyles}
                       type="button"
@@ -103,29 +117,29 @@ export function Hero({ onInstall }: { onInstall: () => void }) {
                       <ChevronDown className="w-4 h-4" />
                       <span className="btn-sheen" aria-hidden="true" />
                     </button>
-                    <button
+                  </div>
+                  <button
                       onClick={onInstall}
                       type="button"
                       aria-haspopup="dialog"
-                      className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border bg-white border-gray-200 text-gray-700 transition-colors hover:border-[#FF9F1C] hover:text-[#D98200] active:scale-[0.98] dark:bg-[#1a1a1a] dark:border-gray-700 dark:text-gray-300 dark:hover:border-[#FF9F1C] dark:hover:text-[#FFB340]"
+                      className="mt-3 inline-flex min-h-11 items-center gap-2 text-xs text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
                     >
                       <Sparkles className="w-4 h-4" />
                       {t.hero.installCta}
                     </button>
-                  </div>
                   <p className="mt-3 text-[10px] sm:text-[11px] tracking-wide text-gray-400 dark:text-gray-500">
                     {t.hero.trustNote}
                   </p>
                 </div>
-
-
+                <MetalTop />
               </div>
+              <div className="hero-metal-guide"><RecipeGuide /></div>
             </div>
             <div className="hero-studies" aria-label={language === 'zh' ? '精选演示' : 'Featured studies'}>
-              {['neo-brutalism', 'braun', 'liquid-glass'].map((id, index) => {
+              {['neo-brutalism', 'braun', 'liquid-glass'].slice(0, compactStudies ? 2 : 3).map((id, index) => {
                 const style = designStyles.find(item => item.id === id)!;
                 return <Link to={`/style/${id}`} key={id} className="hero-study">
-                  <div className="hero-study-image"><img src={`/thumbs/${id}.jpg`} alt={language === 'zh' ? `${style.name}真实页面预览` : `${style.nameEn} page preview`} width="1280" height="800" decoding="async" /></div>
+                  <div className="hero-study-image"><StyleThumbnail styleId={id} sizes="(max-width: 639px) calc(50vw - 21px), (max-width: 1279px) calc(33vw - 32px), 380px" alt={language === 'zh' ? `${style.name}真实页面预览` : `${style.nameEn} page preview`} decoding="async" /></div>
                   <div><span>0{index + 1} / {language === 'zh' ? style.name : style.nameEn}</span><ArrowRight size={14} /></div>
                 </Link>;
               })}
@@ -158,7 +172,7 @@ export function Hero({ onInstall }: { onInstall: () => void }) {
             className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.15em] transition-colors cursor-pointer text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
           >
             <span>{t.hero.primaryCta}</span>
-            <ChevronDown className="w-4 h-4 animate-bounce" />
+            <ChevronDown className="w-4 h-4 animate-bounce motion-reduce:animate-none" />
           </button>
         </div>
       </div>

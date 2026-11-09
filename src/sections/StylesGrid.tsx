@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { StyleSelect } from '../components/StyleSelect';
 import { Search } from 'lucide-react';
 import { designStyles } from '../data/styles';
@@ -7,16 +8,21 @@ import { StyleCard } from '../components/StyleCard';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
 import { useInView } from '../hooks/useInView';
+import { useLibraryFilters } from '../hooks/useLibraryFilters';
+import { useProjectStore } from '../project/store';
 
-const allTags = ['全部', '极简', '现代', '经典', '艺术', '复古', '活泼', '前卫', '个性', '热门', '流行', '温暖'];
-const allTagsEn = ['All', 'Minimal', 'Modern', 'Classic', 'Art', 'Vintage', 'Playful', 'Avant-garde', 'Distinctive', 'Hot', 'Trendy', 'Warm'];
+const allTags = ['全部', '极简', '现代', '经典', '艺术', '复古', '活泼', '前卫', '个性', '温暖'];
+const allTagsEn = ['All', 'Minimal', 'Modern', 'Classic', 'Art', 'Vintage', 'Playful', 'Avant-garde', 'Distinctive', 'Warm'];
 
 export function StylesGrid() {
   const { language } = useAppStore();
-  const [selectedTagIndex, setSelectedTagIndex] = useState(0);
-  const [selectedSceneId, setSelectedSceneId] = useState('');
-  const [selectedDifficulty, setSelectedDifficulty] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const { filters, update } = useLibraryFilters();
+  const selectedTagIndex = filters.tag, selectedSceneId = filters.scene, selectedDifficulty = filters.difficulty, searchQuery = filters.query;
+  const setSelectedTagIndex = (value: number) => update('tag', value);
+  const setSelectedSceneId = (value: string) => update('scene', value);
+  const setSelectedDifficulty = (value: string) => update('difficulty', value);
+  const setSearchQuery = (value: string) => update('query', value);
+  const shortlist = useProjectStore(state => state.shortlist);
   const t = translations[language];
   // 卡片入场动画等网格进入视口才播，避免从 Hero 滚下来时早已播完
   const [gridRef, gridInView] = useInView<HTMLDivElement>();
@@ -90,6 +96,7 @@ export function StylesGrid() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
+                maxLength={120}
                 aria-label={t.grid.searchPlaceholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -137,6 +144,7 @@ export function StylesGrid() {
             </span>
             {hasFilters && <button type="button" onClick={resetFilters} className="min-h-8 text-xs underline underline-offset-4 hover:text-black dark:hover:text-white">{t.grid.reset}</button>}
           </div>
+          {shortlist.length > 0 && <div className="library-candidates"><span>{language === 'zh' ? `已留 ${shortlist.length} 个候选` : `${shortlist.length} shortlisted`}</span><div>{shortlist.map(id => { const style = designStyles.find(s => s.id === id)!; return <Link key={id} to={`/style/${id}`}>{language === 'zh' ? style.name : style.nameEn}</Link>; })}</div><Link to={shortlist.length >= 2 ? `/compare/${shortlist[0]}/${shortlist[1]}?mode=content` : `/project?style=${shortlist[0]}`}>{language === 'zh' ? (shortlist.length >= 2 ? '比较候选 →' : '继续选型 →') : (shortlist.length >= 2 ? 'Compare →' : 'Choose →')}</Link></div>}
         </div>
 
         {/* Grid */}

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { PreviewDevice } from '../store/appStore';
 
 import { demoDevices } from '../lib/demoDevices';
+import { publicUrl } from '../data/site';
 
 interface Props {
   styleId: string;
@@ -42,7 +43,7 @@ export function DemoViewport({ styleId, device, fitHeight = false, onReady, onSi
           {loadedId !== styleId && <div className="demo-loading" aria-label="Loading preview">…</div>}
           <iframe
             ref={frame}
-            src={`/demos/${styleId}.html`}
+            src={publicUrl(`/demos/${styleId}.html`)}
             title={`${styleId} interactive demo`}
             sandbox="allow-scripts allow-same-origin allow-forms"
             className="demo-viewport-frame"

@@ -2,6 +2,8 @@ import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
 import { designStyles } from '../data/styles';
 import { useInView } from '../hooks/useInView';
+import { Link } from 'react-router-dom';
+import { publicUrl } from '../data/site';
 
 export function Footer() {
   const { language } = useAppStore();
@@ -20,7 +22,7 @@ export function Footer() {
               DV
             </span>
             <span className="hidden sm:inline text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500">
-              DESIGN VIBES
+              VIBE DESIGN
             </span>
           </div>
 
@@ -43,11 +45,11 @@ export function Footer() {
 
         {/* Bottom Links */}
         <div className="mt-4 pt-4 border-t flex flex-wrap items-center justify-center gap-3 text-[10px] uppercase tracking-wider border-gray-200 text-gray-400 dark:border-gray-800 dark:text-gray-500">
-          <span className="hover:text-[#FF9F1C] transition-colors cursor-pointer">{t.footer.functional}</span>
+          <Link to="/project" className="hover:text-[#FF9F1C] transition-colors">{language === 'zh' ? '我的改造方案' : 'My change plan'}</Link>
           <span className="text-[#FF9F1C]">/</span>
-          <span className="hover:text-[#FF9F1C] transition-colors cursor-pointer">{t.footer.aesthetic}</span>
+          <Link to="/cases" className="hover:text-[#FF9F1C] transition-colors">{language === 'zh' ? '验证样本' : 'Evidence'}</Link>
           <span className="text-[#FF9F1C]">/</span>
-          <span className="hover:text-[#FF9F1C] transition-colors cursor-pointer">{t.footer.minimal}</span>
+          <a href={publicUrl('/llms.txt')} className="hover:text-[#FF9F1C] transition-colors">{language === 'zh' ? '给 AI 的索引' : 'For AI agents'}</a>
         </div>
       </div>
 
@@ -65,7 +67,7 @@ export function Footer() {
             watermarkInView ? 'animate-watermark-rise' : 'opacity-0'
           }`}
         >
-          DESIGN VIBES
+          VIBE DESIGN
         </div>
       </div>
     </footer>

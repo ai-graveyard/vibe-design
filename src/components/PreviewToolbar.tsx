@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ExternalLink, Maximize2, Minimize2, Code2, Eye, RotateCcw, Monitor, Tablet, Smartphone, Scan } from 'lucide-react';
 import { demoDevices } from '../lib/demoDevices';
+import { publicUrl } from '../data/site';
 import type { Language, PreviewDevice } from '../store/appStore';
 
 const deviceOptions = [
@@ -44,7 +45,7 @@ export function PreviewToolbar({ device, onDevice, language, styleId, size, full
         {onReset && <button onClick={onReset} title={zh ? '重置演示' : 'Reset demo'} aria-label={zh ? '重置演示' : 'Reset demo'}><RotateCcw size={16} /></button>}
         {onCode && <button onClick={onCode} aria-pressed={code} title={zh ? (code ? '查看演示' : '查看源码') : (code ? 'Preview' : 'View source')} aria-label={zh ? (code ? '查看演示' : '查看源码') : (code ? 'Preview' : 'View source')}>{code ? <Eye size={16} /> : <Code2 size={16} />}</button>}
         {onFullscreen && <button onClick={onFullscreen} title={zh ? (fullscreen ? '退出全屏' : '全屏预览') : (fullscreen ? 'Exit fullscreen' : 'Fullscreen preview')} aria-label={zh ? (fullscreen ? '退出全屏' : '全屏预览') : (fullscreen ? 'Exit fullscreen' : 'Fullscreen preview')}>{fullscreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}</button>}
-        {styleId && <a href={`/demos/${styleId}.html`} target="_blank" rel="noopener noreferrer" title={zh ? '独立打开' : 'Open demo'} aria-label={zh ? '独立打开' : 'Open demo'}><ExternalLink size={16} /></a>}
+        {styleId && <a href={publicUrl(`/demos/${styleId}.html`)} target="_blank" rel="noopener noreferrer" title={zh ? '独立打开' : 'Open demo'} aria-label={zh ? '独立打开' : 'Open demo'}><ExternalLink size={16} /></a>}
         {children && <><span className="preview-action-divider" aria-hidden="true" />{children}</>}
       </div>
     </div>

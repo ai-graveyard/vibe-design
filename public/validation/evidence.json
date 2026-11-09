@@ -1,0 +1,973 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "buildId": "fe0d315fbf63d39f4ee0e60fa5725f7228d058856cb2add28798937b979e271d",
+  "generatedAt": "2026-11-08T18:18:58.910Z",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "samples": [
+    {
+      "styleId": "apple",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/apple-landing-zh-390.png",
+      "sourceHash": "c41cc55eb119d5f5ea9f0a8fb264a14570666abc1949bf4eeda2098077e7258f"
+    },
+    {
+      "styleId": "apple",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/apple-landing-zh-1280.png",
+      "sourceHash": "c41cc55eb119d5f5ea9f0a8fb264a14570666abc1949bf4eeda2098077e7258f"
+    },
+    {
+      "styleId": "apple",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/apple-landing-en-390.png",
+      "sourceHash": "c41cc55eb119d5f5ea9f0a8fb264a14570666abc1949bf4eeda2098077e7258f"
+    },
+    {
+      "styleId": "apple",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/apple-landing-en-1280.png",
+      "sourceHash": "c41cc55eb119d5f5ea9f0a8fb264a14570666abc1949bf4eeda2098077e7258f"
+    },
+    {
+      "styleId": "apple",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/apple-dashboard-zh-390.png",
+      "sourceHash": "c41cc55eb119d5f5ea9f0a8fb264a14570666abc1949bf4eeda2098077e7258f"
+    },
+    {
+      "styleId": "apple",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/apple-dashboard-zh-1280.png",
+      "sourceHash": "c41cc55eb119d5f5ea9f0a8fb264a14570666abc1949bf4eeda2098077e7258f"
+    },
+    {
+      "styleId": "apple",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/apple-dashboard-en-390.png",
+      "sourceHash": "c41cc55eb119d5f5ea9f0a8fb264a14570666abc1949bf4eeda2098077e7258f"
+    },
+    {
+      "styleId": "apple",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/apple-dashboard-en-1280.png",
+      "sourceHash": "c41cc55eb119d5f5ea9f0a8fb264a14570666abc1949bf4eeda2098077e7258f"
+    },
+    {
+      "styleId": "swiss",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/swiss-landing-zh-390.png",
+      "sourceHash": "a24cc6c68a325a1104a16ce8cd13cf486dbc6b52b2bebe37243c6fd643d03b67"
+    },
+    {
+      "styleId": "swiss",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/swiss-landing-zh-1280.png",
+      "sourceHash": "a24cc6c68a325a1104a16ce8cd13cf486dbc6b52b2bebe37243c6fd643d03b67"
+    },
+    {
+      "styleId": "swiss",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/swiss-landing-en-390.png",
+      "sourceHash": "a24cc6c68a325a1104a16ce8cd13cf486dbc6b52b2bebe37243c6fd643d03b67"
+    },
+    {
+      "styleId": "swiss",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/swiss-landing-en-1280.png",
+      "sourceHash": "a24cc6c68a325a1104a16ce8cd13cf486dbc6b52b2bebe37243c6fd643d03b67"
+    },
+    {
+      "styleId": "swiss",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/swiss-dashboard-zh-390.png",
+      "sourceHash": "a24cc6c68a325a1104a16ce8cd13cf486dbc6b52b2bebe37243c6fd643d03b67"
+    },
+    {
+      "styleId": "swiss",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/swiss-dashboard-zh-1280.png",
+      "sourceHash": "a24cc6c68a325a1104a16ce8cd13cf486dbc6b52b2bebe37243c6fd643d03b67"
+    },
+    {
+      "styleId": "swiss",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/swiss-dashboard-en-390.png",
+      "sourceHash": "a24cc6c68a325a1104a16ce8cd13cf486dbc6b52b2bebe37243c6fd643d03b67"
+    },
+    {
+      "styleId": "swiss",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/swiss-dashboard-en-1280.png",
+      "sourceHash": "a24cc6c68a325a1104a16ce8cd13cf486dbc6b52b2bebe37243c6fd643d03b67"
+    },
+    {
+      "styleId": "editorial",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/editorial-landing-zh-390.png",
+      "sourceHash": "d43eedb33e58fcb0001098b540383b403f3abe2f54587ced618f2de0d192a948"
+    },
+    {
+      "styleId": "editorial",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/editorial-landing-zh-1280.png",
+      "sourceHash": "d43eedb33e58fcb0001098b540383b403f3abe2f54587ced618f2de0d192a948"
+    },
+    {
+      "styleId": "editorial",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/editorial-landing-en-390.png",
+      "sourceHash": "d43eedb33e58fcb0001098b540383b403f3abe2f54587ced618f2de0d192a948"
+    },
+    {
+      "styleId": "editorial",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/editorial-landing-en-1280.png",
+      "sourceHash": "d43eedb33e58fcb0001098b540383b403f3abe2f54587ced618f2de0d192a948"
+    },
+    {
+      "styleId": "editorial",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/editorial-dashboard-zh-390.png",
+      "sourceHash": "d43eedb33e58fcb0001098b540383b403f3abe2f54587ced618f2de0d192a948"
+    },
+    {
+      "styleId": "editorial",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/editorial-dashboard-zh-1280.png",
+      "sourceHash": "d43eedb33e58fcb0001098b540383b403f3abe2f54587ced618f2de0d192a948"
+    },
+    {
+      "styleId": "editorial",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/editorial-dashboard-en-390.png",
+      "sourceHash": "d43eedb33e58fcb0001098b540383b403f3abe2f54587ced618f2de0d192a948"
+    },
+    {
+      "styleId": "editorial",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/editorial-dashboard-en-1280.png",
+      "sourceHash": "d43eedb33e58fcb0001098b540383b403f3abe2f54587ced618f2de0d192a948"
+    },
+    {
+      "styleId": "material",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/material-landing-zh-390.png",
+      "sourceHash": "d4ed253b3cddb8c34198a89ea111d8f7787edfe8095d58a2570246ba86ce8690"
+    },
+    {
+      "styleId": "material",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/material-landing-zh-1280.png",
+      "sourceHash": "d4ed253b3cddb8c34198a89ea111d8f7787edfe8095d58a2570246ba86ce8690"
+    },
+    {
+      "styleId": "material",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/material-landing-en-390.png",
+      "sourceHash": "d4ed253b3cddb8c34198a89ea111d8f7787edfe8095d58a2570246ba86ce8690"
+    },
+    {
+      "styleId": "material",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/material-landing-en-1280.png",
+      "sourceHash": "d4ed253b3cddb8c34198a89ea111d8f7787edfe8095d58a2570246ba86ce8690"
+    },
+    {
+      "styleId": "material",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/material-dashboard-zh-390.png",
+      "sourceHash": "d4ed253b3cddb8c34198a89ea111d8f7787edfe8095d58a2570246ba86ce8690"
+    },
+    {
+      "styleId": "material",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/material-dashboard-zh-1280.png",
+      "sourceHash": "d4ed253b3cddb8c34198a89ea111d8f7787edfe8095d58a2570246ba86ce8690"
+    },
+    {
+      "styleId": "material",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/material-dashboard-en-390.png",
+      "sourceHash": "d4ed253b3cddb8c34198a89ea111d8f7787edfe8095d58a2570246ba86ce8690"
+    },
+    {
+      "styleId": "material",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/material-dashboard-en-1280.png",
+      "sourceHash": "d4ed253b3cddb8c34198a89ea111d8f7787edfe8095d58a2570246ba86ce8690"
+    },
+    {
+      "styleId": "neo-brutalism",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/neo-brutalism-landing-zh-390.png",
+      "sourceHash": "5dc663ae47d2253cb0e1464a121f6ba847c53e4445db21b9473f4010768db573"
+    },
+    {
+      "styleId": "neo-brutalism",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/neo-brutalism-landing-zh-1280.png",
+      "sourceHash": "5dc663ae47d2253cb0e1464a121f6ba847c53e4445db21b9473f4010768db573"
+    },
+    {
+      "styleId": "neo-brutalism",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/neo-brutalism-landing-en-390.png",
+      "sourceHash": "5dc663ae47d2253cb0e1464a121f6ba847c53e4445db21b9473f4010768db573"
+    },
+    {
+      "styleId": "neo-brutalism",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/neo-brutalism-landing-en-1280.png",
+      "sourceHash": "5dc663ae47d2253cb0e1464a121f6ba847c53e4445db21b9473f4010768db573"
+    },
+    {
+      "styleId": "neo-brutalism",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/neo-brutalism-dashboard-zh-390.png",
+      "sourceHash": "5dc663ae47d2253cb0e1464a121f6ba847c53e4445db21b9473f4010768db573"
+    },
+    {
+      "styleId": "neo-brutalism",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/neo-brutalism-dashboard-zh-1280.png",
+      "sourceHash": "5dc663ae47d2253cb0e1464a121f6ba847c53e4445db21b9473f4010768db573"
+    },
+    {
+      "styleId": "neo-brutalism",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/neo-brutalism-dashboard-en-390.png",
+      "sourceHash": "5dc663ae47d2253cb0e1464a121f6ba847c53e4445db21b9473f4010768db573"
+    },
+    {
+      "styleId": "neo-brutalism",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/neo-brutalism-dashboard-en-1280.png",
+      "sourceHash": "5dc663ae47d2253cb0e1464a121f6ba847c53e4445db21b9473f4010768db573"
+    },
+    {
+      "styleId": "terminal",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/terminal-landing-zh-390.png",
+      "sourceHash": "d97b681f9879ad9de053803501f0b039566c4435799e540105dc7061619d87ce"
+    },
+    {
+      "styleId": "terminal",
+      "scene": "landing",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/terminal-landing-zh-1280.png",
+      "sourceHash": "d97b681f9879ad9de053803501f0b039566c4435799e540105dc7061619d87ce"
+    },
+    {
+      "styleId": "terminal",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/terminal-landing-en-390.png",
+      "sourceHash": "d97b681f9879ad9de053803501f0b039566c4435799e540105dc7061619d87ce"
+    },
+    {
+      "styleId": "terminal",
+      "scene": "landing",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Landing form validates required input and returns local feedback with safe text.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/terminal-landing-en-1280.png",
+      "sourceHash": "d97b681f9879ad9de053803501f0b039566c4435799e540105dc7061619d87ce"
+    },
+    {
+      "styleId": "terminal",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/terminal-dashboard-zh-390.png",
+      "sourceHash": "d97b681f9879ad9de053803501f0b039566c4435799e540105dc7061619d87ce"
+    },
+    {
+      "styleId": "terminal",
+      "scene": "dashboard",
+      "language": "zh",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/terminal-dashboard-zh-1280.png",
+      "sourceHash": "d97b681f9879ad9de053803501f0b039566c4435799e540105dc7061619d87ce"
+    },
+    {
+      "styleId": "terminal",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/terminal-dashboard-en-390.png",
+      "sourceHash": "d97b681f9879ad9de053803501f0b039566c4435799e540105dc7061619d87ce"
+    },
+    {
+      "styleId": "terminal",
+      "scene": "dashboard",
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": [
+        "Style selected through ComparePage; URL scene, language and fixed device viewport applied.",
+        "Inner and outer documents fit the viewport; embedded fonts settle without errors.",
+        "Rendered HTML retains actual source tokens and source attribution; reduced motion disables smooth scrolling.",
+        "Focusable control exposes a visible focus outline.",
+        "Five fixed long-title records; search empty state and status filter match the data.",
+        "New task can be added and completed; text is escaped; default/loading/empty/error/retry and disabled states work.",
+        "No uncaught browser or iframe JavaScript exceptions."
+      ],
+      "screenshot": "/validation/images/terminal-dashboard-en-1280.png",
+      "sourceHash": "d97b681f9879ad9de053803501f0b039566c4435799e540105dc7061619d87ce"
+    }
+  ],
+  "workflow": {
+    "package": {
+      "files": [
+        "README.md",
+        "change-brief.md",
+        "DESIGN.md",
+        "SKILL.md",
+        "checklist.md",
+        "tokens.css",
+        "project-brief.json",
+        "reference.html",
+        "brand-overrides.css",
+        "manifest.json"
+      ],
+      "style": "swiss",
+      "sourceHash": "a24cc6c68a325a1104a16ce8cd13cf486dbc6b52b2bebe37243c6fd643d03b67"
+    }
+  },
+  "checks": [
+    "Built routes and machine-readable documents are served as real files.",
+    "Project inputs, brand override, local restore, strict atomic import, shortlist and real ZIP download work.",
+    "Outcome records restore; key routes fit a 390px viewport; detail defaults to existing-page restyling.",
+    "All six served reference sources match current public/demos files.",
+    "48 standard samples pass viewport, source, font, focus, reduced-motion and interaction gates.",
+    "A/B share identical dashboard content; same-content scrolling synchronizes and swap preserves mode/scene.",
+    "Unsupported standard styles are labelled explicitly and can switch to their full original demos.",
+    "Evidence renders only for its matching build; missing and stale records expose no verified cards."
+  ]
+}

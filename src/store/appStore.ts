@@ -5,7 +5,7 @@ export type Language = 'zh' | 'en';
 export type Theme = 'light' | 'dark';
 export type PreviewDevice = 'desktop' | 'tablet' | 'mobile' | 'responsive';
 
-interface AppState {
+export interface AppState {
   language: Language;
   theme: Theme;
   previewDevice: PreviewDevice;
@@ -16,6 +16,17 @@ interface AppState {
   toggleTheme: () => void;
   setPreviewDevice: (device: PreviewDevice) => void;
   toggleDetailsPanel: () => void;
+}
+
+export function mergeAppSettings(persisted: unknown, current: AppState): AppState {
+  const state = persisted !== null && typeof persisted === 'object' ? persisted as Partial<AppState> : {};
+  return {
+    ...current,
+    language: state.language === 'zh' || state.language === 'en' ? state.language : current.language,
+    theme: state.theme === 'light' || state.theme === 'dark' ? state.theme : current.theme,
+    previewDevice: state.previewDevice === 'desktop' || state.previewDevice === 'tablet' || state.previewDevice === 'mobile' || state.previewDevice === 'responsive' ? state.previewDevice : current.previewDevice,
+    isDetailsPanelCollapsed: typeof state.isDetailsPanelCollapsed === 'boolean' ? state.isDetailsPanelCollapsed : current.isDetailsPanelCollapsed,
+  };
 }
 
 export const useAppStore = create<AppState>()(
@@ -39,7 +50,10 @@ export const useAppStore = create<AppState>()(
       })),
     }),
     {
-      name: 'designvibes-settings',
+      name: 'vibedesign-settings',
+      version: 1,
+      migrate: persistedState => persistedState as AppState,
+      merge: mergeAppSettings,
     }
   )
 );

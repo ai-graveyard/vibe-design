@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
+import { StyleThumbnail } from './StyleThumbnail';
+import { publicUrl } from '../data/site';
 
 // Demo 页按固定桌面视口渲染后整体缩放，保证缩略图与详情页所见完全一致
 const DEMO_WIDTH = 1280;
@@ -30,6 +32,7 @@ interface DemoPreviewProps {
    * 常驻 iframe 的无限动画 + blur 合成会拖垮整页滚动，静态图则没有这些开销。
    */
   thumbnail?: boolean;
+  sizes?: string;
 }
 
 export function DemoPreview({
@@ -38,6 +41,7 @@ export function DemoPreview({
   scrollOnHover = false,
   eager = false,
   thumbnail = false,
+  sizes = '(max-width: 767px) calc(100vw - 32px), (max-width: 1279px) calc(50vw - 40px), 400px',
 }: DemoPreviewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
@@ -125,8 +129,9 @@ export function DemoPreview({
       style={{ backgroundColor: placeholderColor, contentVisibility: 'auto' }}
     >
       {thumbnail && (
-        <img
-          src={`/thumbs/${styleId}.jpg`}
+        <StyleThumbnail
+          styleId={styleId}
+          sizes={sizes}
           alt=""
           aria-hidden="true"
           loading="lazy"
@@ -139,7 +144,7 @@ export function DemoPreview({
       )}
       {visible && scale > 0 && (
         <iframe
-          src={`/demos/${styleId}.html`}
+          src={publicUrl(`/demos/${styleId}.html`)}
           title={`${styleId} demo preview`}
           aria-hidden="true"
           tabIndex={-1}

@@ -82,7 +82,7 @@ export function DemoCodeView({ styleId }: DemoCodeViewProps) {
         {error ? (
           <div className="p-6 text-xs font-mono text-red-400">{t.modal.codeLoadError}</div>
         ) : !source ? (
-          <div className="p-6 text-xs font-mono text-gray-500 animate-pulse">…</div>
+          <div className="p-6 text-xs font-mono text-gray-500 animate-pulse motion-reduce:animate-none">…</div>
         ) : (
           <pre className="code-viewer text-[11.5px] leading-[1.7] font-mono py-4 pr-4">
             <code dangerouslySetInnerHTML={{ __html: html }} />

@@ -12,8 +12,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
-        with:
-          version: 11
 
       - uses: actions/setup-node@v4
         with:
@@ -37,23 +35,32 @@ jobs:
       - name: Studio viewport and embedded interaction tests
         run: pnpm validate:studio
 
+      - name: Project handoff, same-content comparison and evidence tests
+        run: pnpm validate:workflow
+
+      - name: Recipe, download and offline interaction tests
+        run: pnpm validate:recipes
+
       - name: Four-viewport visual gates and local demo interactions
         run: pnpm visual
-
-      - name: Upload visual review artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: design-vibes-visual-review
-          path: |
-            output/visual/
-            output/studio/
-          retention-days: 14
 
       # headless Chrome 打开每个 demo，断言 375px 视口无横向滚动（checklist「Layout」第一条）
       - name: Demo 375px 渲染校验
         run: pnpm validate:render
 
+      - name: Upload visual review artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vibe-design-visual-review
+          path: |
+            output/visual/
+            output/studio/
+            output/workflow/
+            output/recipes/
+            output/render/
+          retention-days: 14
+
       # 改了 src/data 却忘了提交重建后的 skills/ 或 public/skill.md，在这里红
       - name: Skill 产物已同步
-        run: git diff --exit-code -- skills public/skill.md
+        run: git diff --exit-code -- skills public/skill.md public/markdown public/llms.txt public/llms-full.txt

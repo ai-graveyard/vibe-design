@@ -1,4 +1,5 @@
-import { readdirSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readdirSync, readFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 import { openChrome } from './lib/chrome.mjs';
@@ -7,9 +8,12 @@ const output = path.join(root, 'output/visual');
 mkdirSync(output, { recursive: true });
 const sizes = [[390,844],[768,1024],[1280,800],[1440,900]];
 const pages = readdirSync(path.join(root, 'public/demos')).filter(file => file.endsWith('.html')).sort();
+const sourceHashes=()=>Object.fromEntries(readdirSync(path.join(root,'public/demos')).filter(file=>file.endsWith('.html')).sort().map(file=>[file,createHash('sha256').update(readFileSync(path.join(root,'public/demos',file))).digest('hex')]));
+const sources=sourceHashes();
 const capture = process.argv.includes('--capture');
 const browser = await openChrome();
 const failures = [], rows = [];
+const report={schemaVersion:1,status:'testing',sourceMode:'public-file',sourceHashes:sources,startedAt:new Date().toISOString(),reducedMotion:true,rows,interactions:{},failures};
 try {
   for (const [width,height] of sizes) {
     await browser.viewport(width,height);
@@ -35,7 +39,7 @@ try {
       if(issues.length) failures.push({id,width,issues});
       const screenshot=`${id}-${width}.png`;
       if(capture) await browser.screenshot(path.join(output,screenshot));
-      rows.push({id,width,height,...metrics,issues,screenshot:capture?screenshot:null});
+      rows.push({id,width,height,sourceHash:sources[file],...metrics,issues,screenshot:capture?screenshot:null});
     }
     console.log(`Checked ${pages.length} studies at ${width} × ${height}`);
   }
@@ -55,8 +59,9 @@ try {
   await browser.navigate(pathToFileURL(path.join(root,'public/demos/glassmorphism.html')).href);
   const glass=await browser.evaluate(`(() => {const slider=document.querySelector('[aria-label="Glass blur"]');slider.value=34;slider.dispatchEvent(new Event('input',{bubbles:true}));return getComputedStyle(document.querySelector('.glass')).backdropFilter})()`);
   if(!glass.includes('34px')) failures.push({id:'glassmorphism',issues:['material slider did not change backdrop blur'],glass});
-  const report={capturedAt:new Date().toISOString(),browser:await browser.send('Browser.getVersion'),reducedMotion:true,rows,interactions:{material,liquid,glass},failures};
-  writeFileSync(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');
-  if(capture) writeFileSync(path.join(output,'index.html'),`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Design Vibes visual review</title><style>body{font:14px system-ui;margin:32px;background:#f1f2f4;color:#17191c}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}figure{margin:0;padding:12px;background:white;border:1px solid #ddd}img{display:block;width:100%;height:300px;object-fit:contain;object-position:top}figcaption{padding:12px 0}h1{font-size:28px}p{max-width:70ch;line-height:1.6}</style><h1>Design Vibes — visual review</h1><p>30 studies × 4 viewports. Captured after fonts and embedded images load, with reduced motion. Review typography, composition, materials and clipping; these captures require human judgment and are not an automatic fidelity score.</p><main>${rows.map(row=>`<figure><a href="${row.screenshot}"><img src="${row.screenshot}" loading="lazy" alt="${row.id} at ${row.width}px"></a><figcaption>${row.id} / ${row.width} × ${row.height}${row.issues.length?' / CHECK':''}</figcaption></figure>`).join('')}</main></html>`);
-} finally {await browser.close();}
+  if(JSON.stringify(sourceHashes())!==JSON.stringify(sources))throw new Error('Demo sources changed during visual validation');
+  Object.assign(report,{status:failures.length?'failed':'passed',capturedAt:new Date().toISOString(),browser:await browser.send('Browser.getVersion'),interactions:{material,liquid,glass}});
+  if(capture) writeFileSync(path.join(output,'index.html'),`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Vibe Design visual review</title><style>body{font:14px system-ui;margin:32px;background:#f1f2f4;color:#17191c}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}figure{margin:0;padding:12px;background:white;border:1px solid #ddd}img{display:block;width:100%;height:300px;object-fit:contain;object-position:top}figcaption{padding:12px 0}h1{font-size:28px}p{max-width:70ch;line-height:1.6}</style><h1>Vibe Design — visual review</h1><p>30 studies × 4 viewports. Captured after fonts and embedded images load, with reduced motion. Review typography, composition, materials and clipping; these captures require human judgment and are not an automatic fidelity score.</p><main>${rows.map(row=>`<figure><a href="${row.screenshot}"><img src="${row.screenshot}" loading="lazy" alt="${row.id} at ${row.width}px"></a><figcaption>${row.id} / ${row.width} × ${row.height}${row.issues.length?' / CHECK':''}</figcaption></figure>`).join('')}</main></html>`);
+} catch(error){report.status='failed';failures.push({id:'runner',issues:[error.message]});throw error;
+} finally {report.finishedAt=new Date().toISOString();writeFileSync(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');await browser.close();}
 if(failures.length){console.error(JSON.stringify(failures,null,2));process.exitCode=1;}else console.log(`Visual gates passed: ${rows.length} layouts and 3 interaction flows. ${capture?'Screenshots: output/visual/index.html':''}`);

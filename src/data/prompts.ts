@@ -1,6 +1,7 @@
 import { designStyles } from './styles.ts';
 import { styleSpecs, specVersion } from './styleSpecs.ts';
 import { demoTokenCss } from '../lib/demoSource.ts';
+import { SITE_URL } from './site.ts';
 
 export interface StylePrompt {
   id: string;
@@ -89,10 +90,10 @@ export function getAllPrompts(): StylePrompt[] {
   return stylePrompts;
 }
 
-export function getReproductionPrompt(prompt: StylePrompt, language: 'zh' | 'en', source: string, referenceOrigin = 'https://design-vibes.v2ai.org'): string {
+export function getReproductionPrompt(prompt: StylePrompt, language: 'zh' | 'en', source: string, referenceOrigin = SITE_URL): string {
   const spec = styleSpecs[prompt.id];
   const css = demoTokenCss(source);
-  const reference = new URL(`/demos/${prompt.id}.html`, referenceOrigin).href;
+  const reference = `${referenceOrigin.replace(/\/$/, '')}/demos/${prompt.id}.html`;
   const study = language === 'zh'
     ? `复现参考 · ${specVersion}
 先打开并完整阅读示例 ${reference}；该地址用于获取参考，不要求你改动该网站。以附件 HTML（如有）为准。

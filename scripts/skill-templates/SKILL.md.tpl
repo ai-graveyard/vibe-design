@@ -1,66 +1,54 @@
 ---
-name: design-vibes
+name: vibe-design
 description: {{DESCRIPTION}}
 license: MIT
 ---
 
-# Design Vibes
+# Vibe Design
 
-A curated catalog of {{COUNT}} web design styles. Each one ships a style brief (English + Chinese), the exact design tokens, the mistakes that make AI-generated pages of that style look wrong, and a complete self-contained HTML reference implementation.
+{{COUNT}} web style studies with bilingual briefs, source-derived example tokens and independent HTML references. Use them to adapt an existing project while retaining its behavior, brand and useful components. Reference material does not guarantee an AI model's output or certify an implementation.
 
-## When to use this
+## Start with the project
 
-- The user names a style: "make it cyberpunk", "Apple-style landing page", "包豪斯风格首页", "glassmorphism dashboard".
-- The user wants help choosing: "what style suits a SaaS landing page?", "这个博客用什么风格好".
-- The user says a page looks generic, bland, or AI-generated and wants it to have a point of view.
-- The user is building any hero section, landing page, marketing site, or portfolio and hasn't pinned down the visual direction.
+Read the user's project brief, repository instructions, existing `DESIGN.md`, brand rules and representative pages before choosing a treatment. Reuse confirmed goals and constraints already in the conversation. If information is missing, inspect the project and state a reasonable assumption; ask only when a missing decision changes the result materially.
 
-Not for: application UI behavior, component library selection, or accessibility audits that have nothing to do with visual style.
+Default to restyling the existing project. Preserve routes, API contracts, data fields, authentication, forms, user copy, analytics and working interactions. Preserve brand colors, logos, licensed assets and existing component APIs unless the user authorizes a change. A request for a new page can use a demo as a starting point; say when it does.
 
-## Workflow
+## Choose and read the reference
 
-**1. Settle on a style.**
-If the user named one, map it to an `id` in the index below. If they didn't, read `references/picker.md` and recommend 2–3 candidates with a one-line reason each — do not silently pick one for them unless they asked you to just go.
+If a style is named, use its ID below. Otherwise consult `references/picker.md` and offer up to three candidates with a project-specific reason and a concrete tradeoff. Proceed with the user's chosen direction or their authorization to choose.
 
-**2. Read `references/styles/<id>.md`. Always.**
-This is mandatory even for styles you think you know. The file holds the exact hex values, the prompt, and the pitfalls. Reproducing a style from memory is the single biggest cause of output that is "sort of" the style but reads as generic.
+Read `references/styles/<id>.md` for principles, pitfalls, version, source hash and the current example's tokens. Read `assets/demos/<id>.html` for the actual composition and interactions when needed. Read `references/designs/<id>.md` when establishing ongoing project rules.
 
-**3. Read `assets/demos/<id>.html` when you need structure, not just surface.**
-Each demo is a complete single-file page (self-contained with embedded assets and optional local interactions, zero external requests) in that style. Read it when:
-- the user wants a full page rather than a section;
-- you need real layout/spacing/composition patterns, not just colors;
-- the style is Difficulty 3–4, where the look lives in the technique (blur stacks, gradients, mesh, clay shadows) rather than in the palette.
+The tokens describe this authored example. Use them exactly for an explicitly requested demo reproduction. For a project adaptation, map them to the project's brand and existing tokens, preserve the defining principles, and record each deliberate change. Treat a layout pattern, material and motion choice as composable roles; resolve conflicting rules before implementation.
 
-You may copy a demo wholesale as a starting point and rewrite its content. Say so when you do.
+## Adapt in a controlled scope
 
-**4. Build it.**
-- For a close reproduction of the demo, preserve its tokens, composition, typography and assets. For a broader style application, preserve the defining principles and document deliberate adaptations.
-- Work through the pitfalls list explicitly. Those are the specific ways this style gets botched.
-- Match the user's stack. The demos are plain HTML/CSS; translate the tokens and techniques into React/Tailwind/Vue as needed rather than pasting HTML into a React project.
+Use the project's existing framework and components. Agree on the authorized routes or sections from the brief, then complete one representative page and check it before extending the rules to the other authorized pages. Do not replace the project with the demo's fictional product, numbers, imagery or copy.
 
-**5. Self-check against `references/checklist.md` before you hand anything over.**
-Compare actual screenshots at 390, 768, 1280 and 1440px after fonts and images load. Check key interaction states and reduced motion separately. A passing build does not prove fidelity.
+Use the selected study version and demo source hash consistently in the brief, implementation notes and `DESIGN.md`. Copy `references/designs/<id>.md` only when a project design document is absent; otherwise merge the relevant rules into the existing document. Record the project's actual token mappings, component states, protected behavior, page scope and intentional exceptions. Keep these rules useful for the next page.
 
-## Hard rules
+## Verify the rendered result
 
-- **Separate principles from examples.** A demo palette or radius is one authored choice, not a universal rule. Use its exact values when reproducing that example.
-- **Commit to the style.** These styles are opinionated on purpose. Half-applied brutalism just looks broken; half-applied maximalism just looks cluttered. If the user wants restraint, pick a restrained style — don't dilute a loud one.
-- **Keep the composition coherent.** Layout patterns (such as Bento) can be combined with a design language. Explain intentional combinations rather than mixing unrelated decoration.
-- **Be honest about coverage.** This catalog is not exhaustive. If a request falls outside it, say so and use appropriate primary references.
+Run the project's relevant checks, then inspect the actual page in an available browser after images and fonts load. Follow `references/checklist.md`: compare before and after at the project breakpoints, check narrow screens, keyboard navigation, component states, long Chinese and mixed-script copy, reduced motion and fallbacks. Check route and task behavior against the original page.
+
+Fix observed problems and repeat the affected checks. Report the routes, viewport sizes and states actually inspected, remaining limitations, and any deliberate deviations. If no browser is available, say that visual and interaction acceptance remains unverified; a build or static token match cannot stand in for it.
 
 ## Style index
 
-Difficulty is the cost of reproducing the style in pure CSS: 1 Easy → 4 Expert.
+Difficulty estimates the implementation work of the example in CSS; it does not predict project delivery time.
 
 {{STYLE_INDEX}}
 
 ## Files
 
-```
-references/styles/<id>.md   Per-style: prompt (EN + 中文), design tokens, traits, pitfalls
-references/picker.md        Choose by project type or by implementation difficulty
-references/checklist.md     Pre-delivery self-check
-assets/demos/<id>.html      Complete single-file reference page, zero external requests
+```text
+references/styles/<id>.md   Principles, bilingual brief, example tokens and source identity
+references/designs/<id>.md Ongoing DESIGN.md starting point for a selected project
+references/picker.md       Candidates by project type and implementation difficulty
+references/checklist.md    Browser and behavior acceptance guidance
+assets/demos/<id>.html     Independent reference implementation
 ```
 
 Source and live previews: {{HOMEPAGE}}
+Online agent index: {{HOMEPAGE}}/llms.txt

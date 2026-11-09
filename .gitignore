@@ -46,3 +46,4 @@ dist/
 .claude/
 # Local browser evidence
 /output/
+/public/vibe-design-offline.html

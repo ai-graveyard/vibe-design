@@ -33,5 +33,5 @@ test('preview and custom deployments link to their own reference HTML',()=>{
  const source=readFileSync(new URL('../../public/demos/apple.html',import.meta.url),'utf8');
  const brief=getReproductionPrompt(prompt,'zh',source,'http://127.0.0.1:4176');
  assert.ok(brief.includes('http://127.0.0.1:4176/demos/apple.html'));
- assert.ok(!brief.includes('https://design-vibes.v2ai.org/demos/apple.html'));
+ assert.ok(!brief.includes('https://vibe-design.v2ai.org/demos/apple.html'));
 });

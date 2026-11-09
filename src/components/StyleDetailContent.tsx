@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { PanelRightClose, PanelRightOpen } from 'lucide-react';
-import type { DesignStyle } from '../data/styles';
+import type { DesignStyle, StyleId } from '../data/styles';
 import { useAppStore, type PreviewDevice } from '../store/appStore';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { DemoViewport } from './DemoViewport';
@@ -10,7 +10,7 @@ import { DesignTokens } from './DesignTokens';
 import { PromptSection } from './PromptSection';
 import { StyleNotes } from './StyleNotes';
 
-export function StyleDetailContent({ style }: { style: DesignStyle }) {
+export function StyleDetailContent({ style }: { style: DesignStyle<StyleId> }) {
   const { language, previewDevice, setPreviewDevice, isDetailsPanelCollapsed, toggleDetailsPanel } = useAppStore();
   const isMobile = useIsMobile();
   const [mobileDevice, setMobileDevice] = useState<PreviewDevice>('mobile');
@@ -61,6 +61,7 @@ export function StyleDetailContent({ style }: { style: DesignStyle }) {
         <div className="studio-caption">{zh ? '在画布内滚动查看完整页面；全屏可以看清更多细节。' : 'Scroll inside the canvas to explore. Go fullscreen for a closer look.'}</div>
       </section>
       <aside className="style-details" aria-label={zh ? '风格说明与参考资料' : 'Style guide and reference'}>
+        <section className="detail-fit"><h3>{zh ? '先判断是否适合' : 'Check the fit first'}</h3><p><strong>{zh ? '适合' : 'Best for'}</strong>{(zh ? style.useCases : style.useCasesEn).slice(0, 2).join(' · ')}</p><p><strong>{zh ? '需要考虑' : 'Consider'}</strong>{(zh ? style.cons : style.consEn)[0]}</p></section>
         <PromptSection styleId={style.id} />
         <StyleNotes styleId={style.id} language={language} />
         <DesignTokens styleId={style.id} />

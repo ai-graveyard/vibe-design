@@ -1,5 +1,5 @@
 import { preview } from 'vite';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
@@ -9,7 +9,8 @@ const output=path.join(root,'output/studio');mkdirSync(output,{recursive:true});
 // Test the built application, without development-only DOM inspection plugins.
 const server=await preview({root,preview:{host:'127.0.0.1',port:0},logLevel:'error'});
 let browser;
-const evidence={};
+const buildId=JSON.parse(readFileSync(path.join(root,'dist/build-id.json'),'utf8')).id;
+const evidence={schemaVersion:1,buildId,status:'testing',startedAt:new Date().toISOString()};
 try{
  const base=server.resolvedUrls.local[0].replace(/\/$/,'');
  browser=await openChrome();
@@ -35,15 +36,21 @@ try{
  await browser.viewport(375,812);await waitFor(`document.querySelector('iframe.demo-viewport-frame')?.clientWidth===390`);
  evidence.mobile=await dimensions();assert.equal(evidence.mobile.width,390);assert.equal(evidence.mobile.height,844);assert.equal(evidence.mobile.outerOverflow,false);
  await browser.screenshot(path.join(output,'mobile.png'));
- await browser.viewport(1280,900);await browser.navigate(base+'/compare/glassmorphism/liquid-glass');await framesReady(2);
+ await browser.viewport(1280,900);await browser.navigate(base+'/compare/glassmorphism/liquid-glass?mode=original');await framesReady(2);
  evidence.compareWidths=await browser.evaluate(`[...document.querySelectorAll('iframe.demo-viewport-frame')].map(f=>f.clientWidth)`);assert.deepEqual(evidence.compareWidths,[1280,1280]);
  await browser.evaluate(`document.querySelector('iframe.demo-viewport-frame').contentWindow.scrollTo({top:350,behavior:'instant'})`);
  await waitFor(`document.querySelectorAll('iframe.demo-viewport-frame')[1].contentWindow.scrollY>0`);
  evidence.scrollProgress=await browser.evaluate(`[...document.querySelectorAll('iframe.demo-viewport-frame')].map(f=>{const w=f.contentWindow;return w.scrollY/(w.document.documentElement.scrollHeight-w.innerHeight)})`);
  assert.ok(Math.abs(evidence.scrollProgress[0]-evidence.scrollProgress[1])<.01);
  await browser.screenshot(path.join(output,'compare.png'));
+ assert.equal(JSON.parse(readFileSync(path.join(root,'dist/build-id.json'),'utf8')).id,buildId,'Build changed during studio validation');
+ evidence.status='passed';
  console.log('Studio gates passed: fixed viewports, panel resizing, fullscreen fit and Escape, mobile canvas, embedded form, synchronized comparison.');
+}catch(error){
+ evidence.status='failed';evidence.failure={message:error.message,browserErrors:browser?.errors??[]};
+ throw error;
 }finally{
+ evidence.finishedAt=new Date().toISOString();
  writeFileSync(path.join(output,'report.json'),JSON.stringify(evidence,null,2)+'\n');
- if(browser)await browser.close();await new Promise(resolve=>server.httpServer.close(resolve));
+ if(browser)await browser.close();server.httpServer.closeAllConnections();await new Promise(resolve=>server.httpServer.close(resolve));
 }

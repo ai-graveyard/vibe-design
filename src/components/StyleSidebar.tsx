@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import { designStyles, type DesignStyle } from '../data/styles';
+import { designStyles, type DesignStyle, type StyleId } from '../data/styles';
 import { useAppStore } from '../store/appStore';
 import { DemoPreview } from './DemoPreview';
 import { useEffect, useRef, forwardRef } from 'react';
@@ -79,7 +79,7 @@ export function StyleSidebar({ currentStyleId, horizontal = false }: StyleSideba
 }
 
 interface StyleSidebarItemProps {
-  style: DesignStyle;
+  style: DesignStyle<StyleId>;
   isActive: boolean;
   language: 'zh' | 'en';
 }
@@ -100,7 +100,7 @@ const StyleSidebarItem = forwardRef<HTMLAnchorElement, StyleSidebarItemProps>(
       >
         {/* Mini Preview */}
         <div className="relative aspect-[16/10] overflow-hidden bg-white dark:bg-[#1a1a1a]">
-          <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} thumbnail />
+          <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} thumbnail sizes="160px" />
         </div>
 
         {/* Info */}

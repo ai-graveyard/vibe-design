@@ -1,3 +1,5 @@
+import { publicUrl } from '../data/site.ts';
+
 export interface DemoToken { name: string; value: string }
 
 /** Shared by the website, copyable brief and Skill builder. Ignore CSS comments. */
@@ -15,7 +17,7 @@ export function demoTokenCss(source: string): string {
 const cache = new Map<string, Promise<string>>();
 export function loadDemoSource(styleId: string): Promise<string> {
   if (!cache.has(styleId)) {
-    const request = fetch(`/demos/${styleId}.html`).then(async (response) => {
+    const request = fetch(publicUrl(`/demos/${styleId}.html`)).then(async (response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const source = await response.text();
       if (!parseDemoTokens(source).length) throw new Error('Invalid demo source');

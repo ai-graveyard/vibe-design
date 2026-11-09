@@ -10,7 +10,7 @@ export async function openChrome() {
     try { executable = execFileSync('which', [name], { encoding: 'utf8' }).trim(); break; } catch { /* Try the next executable. */ }
   }
   if (!executable) throw new Error('Chrome not found. Set CHROME_PATH.');
-  const profile = mkdtempSync(path.join(tmpdir(), 'design-vibes-visual-'));
+  const profile = mkdtempSync(path.join(tmpdir(), 'vibe-design-visual-'));
   const proc = spawn(executable, ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`, '--force-color-profile=srgb', '--hide-scrollbars', 'about:blank']);
   let socket;
   const close = async () => {
@@ -33,8 +33,10 @@ export async function openChrome() {
     let id = 0;
     const pending = new Map();
     const errors = [];
+    const requests = [];
     socket.onmessage = ({ data }) => {
       const message = JSON.parse(data);
+      if (message.method === 'Network.requestWillBeSent') requests.push(message.params.request.url);
       if (message.method === 'Runtime.exceptionThrown') errors.push(message.params.exceptionDetails.exception?.description ?? message.params.exceptionDetails.text);
       if (pending.has(message.id)) { const { resolve, reject, timer } = pending.get(message.id); clearTimeout(timer); pending.delete(message.id); if (message.error) reject(new Error(message.error.message)); else resolve(message.result); }
     };
@@ -43,14 +45,14 @@ export async function openChrome() {
       const timer = setTimeout(() => { pending.delete(requestId); reject(new Error(`${method} timed out`)); }, 15000);
       pending.set(requestId, { resolve, reject, timer }); socket.send(JSON.stringify({ id: requestId, method, params }));
     });
-    await send('Page.enable'); await send('Runtime.enable');
+    await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
     const evaluate = async expression => {
       const response = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
       if (response.exceptionDetails) throw new Error(response.exceptionDetails.exception?.description ?? response.exceptionDetails.text);
       return response.result.value;
     };
     return {
-      close, send, evaluate, errors,
+      close, send, evaluate, errors, requests,
       async viewport(width, height, reduced = true) {
         await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
         await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: reduced ? 'reduce' : 'no-preference' }] });
@@ -64,7 +66,7 @@ export async function openChrome() {
           if (ready) break;
           await new Promise(resolve => setTimeout(resolve, 40));
         }
-        await evaluate(`(async () => { await document.fonts.ready; await Promise.all([...document.images].map(i => i.decode().catch(() => {}))); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); })()`);
+        await evaluate(`(async () => { await document.fonts.ready; await Promise.all([...document.images].filter(i => i.loading !== 'lazy' || i.complete).map(i => i.decode().catch(() => {}))); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); })()`);
       },
       async screenshot(file) { const { data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false }); writeFileSync(file, Buffer.from(data, 'base64')); },
     };

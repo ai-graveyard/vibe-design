@@ -1,13 +1,14 @@
 // 选型指南数据：按项目场景/技术难度推荐风格。
 // 源自《网站设计风格大全.md》的「按场景推荐」「按技术难度推荐」两表，并纳入后续新增风格。
 // styleIds 必须是 styles.ts 中存在的 id。
+import type { StyleId } from './styles';
 
 export interface Scene {
   id: string;
   icon: string;
   name: string;
   nameEn: string;
-  styleIds: string[];
+  styleIds: StyleId[];
 }
 
 export const scenes: Scene[] = [
@@ -74,7 +75,7 @@ export interface DifficultyTier {
   level: number;
   name: string;
   nameEn: string;
-  styleIds: string[];
+  styleIds: StyleId[];
 }
 
 export const difficultyTiers: DifficultyTier[] = [

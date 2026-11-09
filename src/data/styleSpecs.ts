@@ -1,3 +1,5 @@
+import type { StyleId } from './styles';
+
 export type StyleKind = 'language' | 'movement' | 'layout' | 'material' | 'aesthetic' | 'motion';
 export type Bilingual = { zh: string; en: string };
 export interface StyleSpec {
@@ -21,7 +23,7 @@ const pair = (zh: string, en: string): Bilingual => ({ zh, en });
 function spec(kind: StyleKind, composition: Bilingual, signature: Bilingual, avoid: Bilingual): StyleSpec {
   return { kind, composition, signature, avoid };
 }
-export const styleSpecs: Record<string, StyleSpec> = {
+export const styleSpecs: Record<StyleId, StyleSpec> = {
   apple: spec('language', pair('以产品为中心：短标题、大幅产品画面、清楚的卖点与克制的分区。', 'Center the product: short headlines, large product imagery, clear benefits and restrained sections.'), pair('系统无衬线字体，紧凑标题字距，统一间距；蓝色用于链接和主操作，材质与留白共同建立层级。', 'System sans-serif, tight display tracking and consistent spacing; reserve blue for links and primary actions. Let material and whitespace establish hierarchy.'), pair('不要把大留白变成内容缺失，也不要把大圆角、无强调色或某个阴影尺寸当作通用规则。', 'Whitespace must support content. Oversized corners, no accent color or a single shadow size are not universal rules.')),
   braun: spec('language', pair('用模数网格组织信息，按真实功能分组；标签、刻度和控件相互对齐。', 'Use a modular grid and functional grouping. Align labels, scales and controls.'), pair('中性灰、清楚的标识与克制的功能色；触感来自材质细节，装饰服从使用。', 'Neutral grays, clear labeling and restrained functional color; tactile material details serve use.'), pair('不要给所有元素加橙色或无功能的仪表盘装饰。', 'Avoid orange everywhere or decorative controls without a purpose.')),
   flat: spec('language', pair('用纯色分区、明确字号和简单图标组织任务。', 'Organize tasks with solid color regions, clear typography and simple icons.'), pair('平面色块、清晰边界与一致的图标笔画，靠对比和位置形成层级。', 'Solid fills, clear boundaries and consistent icon strokes; hierarchy comes from contrast and position.'), pair('避免立体斜面、材质反光和装饰性渐变；保留操作状态。', 'Avoid bevels, material reflections and decorative gradients; preserve interaction states.')),

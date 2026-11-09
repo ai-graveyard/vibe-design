@@ -3,15 +3,16 @@ import { Copy, Check, ExternalLink, X } from 'lucide-react';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
 import { designStyles } from '../data/styles';
+import { SITE_URL } from '../data/site';
 
-const SITE = 'https://design-vibes.v2ai.org';
+const SITE = SITE_URL;
 
 /** 让 agent 在线读取安装说明的一句话，方式一的核心 */
 const AGENT_PROMPT_ZH = `请阅读 ${SITE}/skill.md 并按其中的说明安装这个 skill。`;
 const AGENT_PROMPT_EN = `Read ${SITE}/skill.md and install the skill following the instructions there.`;
 
-const INSTALL_CMD = `DIR=~/.claude/skills/design-vibes
-mkdir -p "$DIR" && curl -fsSL ${SITE}/design-vibes-skill.tar.gz | tar -xz -C "$DIR"`;
+const INSTALL_CMD = `DIR=~/.claude/skills/vibe-design
+mkdir -p "$DIR" && curl -fsSL ${SITE}/vibe-design-skill.tar.gz | tar -xz -C "$DIR"`;
 
 /**
  * 复制按钮。primary 只留给「最快」那条路径——弹窗中的橙色实心块，
@@ -236,7 +237,7 @@ export function InstallSkill({ onClose }: { onClose: () => void }) {
                 </div>
                 <p className="mt-3 text-[11px] leading-relaxed text-gray-500 dark:text-gray-400">
                   {t.install.codexNote}{' '}
-                  <code className="font-mono text-gray-700 dark:text-gray-300">~/.codex/skills/design-vibes</code>
+                  <code className="font-mono text-gray-700 dark:text-gray-300">~/.codex/skills/vibe-design</code>
                 </p>
               </div>
             </div>
